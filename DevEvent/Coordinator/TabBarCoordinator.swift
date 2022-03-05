@@ -72,7 +72,18 @@ final class TabBarCoordinator: Coordinator {
     
     init(window: UIWindow) {
         self.window = window
-        self.tabBarController = UITabBarController()
+        
+        let tabBarController: UITabBarController = {
+            let tabBarController = UITabBarController()
+            
+            // iOS 15버전부터 tabBar divider 보이지 않는 이슈 핸들링
+            if #available(iOS 15.0, *) {
+                tabBarController.tabBar.scrollEdgeAppearance = UITabBarAppearance()
+            }
+            return tabBarController
+        }()
+        
+        self.tabBarController = tabBarController
         window.rootViewController = tabBarController
     }
     
@@ -81,10 +92,7 @@ final class TabBarCoordinator: Coordinator {
         let controllers = pages.map({ tabController($0) })
         
         tabBarController.setViewControllers(controllers, animated: true)
-        tabBarController.tabBar.isTranslucent = false
         tabBarController.selectedIndex = TabBarPage.home.pageOrderNumber
-        
-        
     }
     
     func tabController(_ page: TabBarPage) -> UINavigationController {
