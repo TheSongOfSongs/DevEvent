@@ -18,6 +18,8 @@
 		76FB9CF727D30522001EC0F5 /* DevEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9CF627D30522001EC0F5 /* DevEventTests.swift */; };
 		76FB9D0127D30522001EC0F5 /* DevEventUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D0027D30522001EC0F5 /* DevEventUITests.swift */; };
 		76FB9D0327D30522001EC0F5 /* DevEventUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D0227D30522001EC0F5 /* DevEventUITestsLaunchTests.swift */; };
+		76FB9D1A27D3758A001EC0F5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D1927D3758A001EC0F5 /* Coordinator.swift */; };
+		76FB9D1C27D377F0001EC0F5 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D1B27D377F0001EC0F5 /* TabBarCoordinator.swift */; };
 		9BBA0284C73D6E626E26A109 /* Pods_DevEvent_DevEventUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B952448BF5389E04C5615CBB /* Pods_DevEvent_DevEventUITests.framework */; };
 		DB261832A9B3186352935EE2 /* Pods_DevEvent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32EA8F1092728D5BE061C49 /* Pods_DevEvent.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +60,8 @@
 		76FB9CFC27D30522001EC0F5 /* DevEventUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DevEventUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76FB9D0027D30522001EC0F5 /* DevEventUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevEventUITests.swift; sourceTree = "<group>"; };
 		76FB9D0227D30522001EC0F5 /* DevEventUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevEventUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		76FB9D1927D3758A001EC0F5 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		76FB9D1B27D377F0001EC0F5 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		7CE4C22F7B2C86A6473E065D /* Pods_DevEventTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevEventTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A97F43511E3A39641AEADCB2 /* Pods-DevEvent-DevEventUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevEvent-DevEventUITests.debug.xcconfig"; path = "Target Support Files/Pods-DevEvent-DevEventUITests/Pods-DevEvent-DevEventUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B952448BF5389E04C5615CBB /* Pods_DevEvent_DevEventUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevEvent_DevEventUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +135,7 @@
 		76FB9CDB27D30521001EC0F5 /* DevEvent */ = {
 			isa = PBXGroup;
 			children = (
+				76FB9D1627D37551001EC0F5 /* Coordinator */,
 				76FB9D1227D30C8E001EC0F5 /* Storyboard */,
 				76FB9D1127D30C7C001EC0F5 /* ViewController */,
 				76FB9D1027D30B32001EC0F5 /* Support */,
@@ -182,6 +187,15 @@
 				76FB9CEA27D30522001EC0F5 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		76FB9D1627D37551001EC0F5 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				76FB9D1927D3758A001EC0F5 /* Coordinator.swift */,
+				76FB9D1B27D377F0001EC0F5 /* TabBarCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		AAB1AA5CC808EAA0CD85D764 /* Frameworks */ = {
@@ -434,6 +448,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				76FB9CE127D30521001EC0F5 /* ViewController.swift in Sources */,
+				76FB9D1A27D3758A001EC0F5 /* Coordinator.swift in Sources */,
+				76FB9D1C27D377F0001EC0F5 /* TabBarCoordinator.swift in Sources */,
 				76FB9CDD27D30521001EC0F5 /* AppDelegate.swift in Sources */,
 				76FB9CE727D30521001EC0F5 /* DevEvent.xcdatamodeld in Sources */,
 				76FB9CDF27D30521001EC0F5 /* SceneDelegate.swift in Sources */,
@@ -621,7 +637,6 @@
 				INFOPLIST_FILE = DevEvent/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -651,7 +666,6 @@
 				INFOPLIST_FILE = DevEvent/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
