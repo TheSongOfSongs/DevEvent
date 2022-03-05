@@ -103,7 +103,17 @@ final class TabBarCoordinator: Coordinator {
                                                        image: page.image,
                                                        tag: page.pageOrderNumber)
         
-        // TODO: - ViewController 연결
+        switch page {
+        case .home:
+            let homeCoordinator = HomeCoordinator(presenter: navigationController)
+            homeCoordinator.parentCoordinator = self
+            homeCoordinator.start()
+            childCoordinators.append(homeCoordinator)
+        case .favorites:
+            break
+        case .info:
+            break
+        }
         
         return navigationController
     }

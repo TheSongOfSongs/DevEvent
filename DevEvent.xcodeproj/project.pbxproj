@@ -10,7 +10,6 @@
 		64B78890900C5C6DD481D90F /* Pods_DevEventTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE4C22F7B2C86A6473E065D /* Pods_DevEventTests.framework */; };
 		76FB9CDD27D30521001EC0F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9CDC27D30521001EC0F5 /* AppDelegate.swift */; };
 		76FB9CDF27D30521001EC0F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9CDE27D30521001EC0F5 /* SceneDelegate.swift */; };
-		76FB9CE127D30521001EC0F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9CE027D30521001EC0F5 /* ViewController.swift */; };
 		76FB9CE427D30521001EC0F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76FB9CE227D30521001EC0F5 /* Main.storyboard */; };
 		76FB9CE727D30521001EC0F5 /* DevEvent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9CE527D30521001EC0F5 /* DevEvent.xcdatamodeld */; };
 		76FB9CE927D30522001EC0F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76FB9CE827D30522001EC0F5 /* Assets.xcassets */; };
@@ -20,6 +19,10 @@
 		76FB9D0327D30522001EC0F5 /* DevEventUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D0227D30522001EC0F5 /* DevEventUITestsLaunchTests.swift */; };
 		76FB9D1A27D3758A001EC0F5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D1927D3758A001EC0F5 /* Coordinator.swift */; };
 		76FB9D1C27D377F0001EC0F5 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D1B27D377F0001EC0F5 /* TabBarCoordinator.swift */; };
+		76FB9D1E27D38978001EC0F5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D1D27D38978001EC0F5 /* HomeViewController.swift */; };
+		76FB9D2027D389A4001EC0F5 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D1F27D389A4001EC0F5 /* HomeCoordinator.swift */; };
+		76FB9D2527D38AC6001EC0F5 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D2427D38AC6001EC0F5 /* UIViewController+Extension.swift */; };
+		76FB9D2727D38B67001EC0F5 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D2627D38B67001EC0F5 /* UIStoryboard+Extension.swift */; };
 		9BBA0284C73D6E626E26A109 /* Pods_DevEvent_DevEventUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B952448BF5389E04C5615CBB /* Pods_DevEvent_DevEventUITests.framework */; };
 		DB261832A9B3186352935EE2 /* Pods_DevEvent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32EA8F1092728D5BE061C49 /* Pods_DevEvent.framework */; };
 /* End PBXBuildFile section */
@@ -49,7 +52,6 @@
 		76FB9CD927D30521001EC0F5 /* DevEvent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevEvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76FB9CDC27D30521001EC0F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76FB9CDE27D30521001EC0F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		76FB9CE027D30521001EC0F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		76FB9CE327D30521001EC0F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		76FB9CE627D30521001EC0F5 /* DevEvent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DevEvent.xcdatamodel; sourceTree = "<group>"; };
 		76FB9CE827D30522001EC0F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,6 +64,10 @@
 		76FB9D0227D30522001EC0F5 /* DevEventUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevEventUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		76FB9D1927D3758A001EC0F5 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		76FB9D1B27D377F0001EC0F5 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		76FB9D1D27D38978001EC0F5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		76FB9D1F27D389A4001EC0F5 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		76FB9D2427D38AC6001EC0F5 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		76FB9D2627D38B67001EC0F5 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		7CE4C22F7B2C86A6473E065D /* Pods_DevEventTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevEventTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A97F43511E3A39641AEADCB2 /* Pods-DevEvent-DevEventUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevEvent-DevEventUITests.debug.xcconfig"; path = "Target Support Files/Pods-DevEvent-DevEventUITests/Pods-DevEvent-DevEventUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B952448BF5389E04C5615CBB /* Pods_DevEvent_DevEventUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevEvent_DevEventUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +144,7 @@
 				76FB9D1627D37551001EC0F5 /* Coordinator */,
 				76FB9D1227D30C8E001EC0F5 /* Storyboard */,
 				76FB9D1127D30C7C001EC0F5 /* ViewController */,
+				76FB9D2127D38A91001EC0F5 /* Extensions */,
 				76FB9D1027D30B32001EC0F5 /* Support */,
 				76FB9CE827D30522001EC0F5 /* Assets.xcassets */,
 				76FB9CED27D30522001EC0F5 /* Info.plist */,
@@ -175,7 +182,7 @@
 		76FB9D1127D30C7C001EC0F5 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				76FB9CE027D30521001EC0F5 /* ViewController.swift */,
+				76FB9D1D27D38978001EC0F5 /* HomeViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -194,8 +201,18 @@
 			children = (
 				76FB9D1927D3758A001EC0F5 /* Coordinator.swift */,
 				76FB9D1B27D377F0001EC0F5 /* TabBarCoordinator.swift */,
+				76FB9D1F27D389A4001EC0F5 /* HomeCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		76FB9D2127D38A91001EC0F5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				76FB9D2627D38B67001EC0F5 /* UIStoryboard+Extension.swift */,
+				76FB9D2427D38AC6001EC0F5 /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AAB1AA5CC808EAA0CD85D764 /* Frameworks */ = {
@@ -447,12 +464,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76FB9CE127D30521001EC0F5 /* ViewController.swift in Sources */,
+				76FB9D2527D38AC6001EC0F5 /* UIViewController+Extension.swift in Sources */,
 				76FB9D1A27D3758A001EC0F5 /* Coordinator.swift in Sources */,
 				76FB9D1C27D377F0001EC0F5 /* TabBarCoordinator.swift in Sources */,
 				76FB9CDD27D30521001EC0F5 /* AppDelegate.swift in Sources */,
 				76FB9CE727D30521001EC0F5 /* DevEvent.xcdatamodeld in Sources */,
 				76FB9CDF27D30521001EC0F5 /* SceneDelegate.swift in Sources */,
+				76FB9D2027D389A4001EC0F5 /* HomeCoordinator.swift in Sources */,
+				76FB9D1E27D38978001EC0F5 /* HomeViewController.swift in Sources */,
+				76FB9D2727D38B67001EC0F5 /* UIStoryboard+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
