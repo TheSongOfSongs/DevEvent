@@ -103,7 +103,6 @@
 				64F4DF495EAFED19227E031B /* Pods-DevEventTests.debug.xcconfig */,
 				34876CD902EA2D7E68F26A08 /* Pods-DevEventTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -132,12 +131,10 @@
 		76FB9CDB27D30521001EC0F5 /* DevEvent */ = {
 			isa = PBXGroup;
 			children = (
-				76FB9CDC27D30521001EC0F5 /* AppDelegate.swift */,
-				76FB9CDE27D30521001EC0F5 /* SceneDelegate.swift */,
-				76FB9CE027D30521001EC0F5 /* ViewController.swift */,
-				76FB9CE227D30521001EC0F5 /* Main.storyboard */,
+				76FB9D1227D30C8E001EC0F5 /* Storyboard */,
+				76FB9D1127D30C7C001EC0F5 /* ViewController */,
+				76FB9D1027D30B32001EC0F5 /* Support */,
 				76FB9CE827D30522001EC0F5 /* Assets.xcassets */,
-				76FB9CEA27D30522001EC0F5 /* LaunchScreen.storyboard */,
 				76FB9CED27D30522001EC0F5 /* Info.plist */,
 				76FB9CE527D30521001EC0F5 /* DevEvent.xcdatamodeld */,
 			);
@@ -159,6 +156,32 @@
 				76FB9D0227D30522001EC0F5 /* DevEventUITestsLaunchTests.swift */,
 			);
 			path = DevEventUITests;
+			sourceTree = "<group>";
+		};
+		76FB9D1027D30B32001EC0F5 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				76FB9CDC27D30521001EC0F5 /* AppDelegate.swift */,
+				76FB9CDE27D30521001EC0F5 /* SceneDelegate.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		76FB9D1127D30C7C001EC0F5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				76FB9CE027D30521001EC0F5 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		76FB9D1227D30C8E001EC0F5 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				76FB9CE227D30521001EC0F5 /* Main.storyboard */,
+				76FB9CEA27D30522001EC0F5 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		AAB1AA5CC808EAA0CD85D764 /* Frameworks */ = {
@@ -593,7 +616,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3SJ86P2MZZ;
+				DEVELOPMENT_TEAM = VTA27W3BV8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DevEvent/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -623,7 +646,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3SJ86P2MZZ;
+				DEVELOPMENT_TEAM = VTA27W3BV8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DevEvent/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
