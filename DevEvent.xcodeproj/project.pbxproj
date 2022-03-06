@@ -31,6 +31,8 @@
 		76FB9D3F27D4AAAE001EC0F5 /* DevEventsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D3E27D4AAAE001EC0F5 /* DevEventsFetcher.swift */; };
 		76FB9D4027D4C17D001EC0F5 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D3827D4A233001EC0F5 /* Parser.swift */; };
 		76FB9D4227D4C5A0001EC0F5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D4127D4C5A0001EC0F5 /* HomeViewModel.swift */; };
+		76FB9D4827D4C83E001EC0F5 /* DevEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D4627D4C83E001EC0F5 /* DevEventTableViewCell.swift */; };
+		76FB9D4927D4C83E001EC0F5 /* DevEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76FB9D4727D4C83E001EC0F5 /* DevEventTableViewCell.xib */; };
 		76FB9D4B27D4CCBC001EC0F5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D4A27D4CCBC001EC0F5 /* UIView+Extension.swift */; };
 		9BBA0284C73D6E626E26A109 /* Pods_DevEvent_DevEventUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B952448BF5389E04C5615CBB /* Pods_DevEvent_DevEventUITests.framework */; };
 		DB261832A9B3186352935EE2 /* Pods_DevEvent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32EA8F1092728D5BE061C49 /* Pods_DevEvent.framework */; };
@@ -85,6 +87,8 @@
 		76FB9D3A27D4A3B1001EC0F5 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		76FB9D3E27D4AAAE001EC0F5 /* DevEventsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevEventsFetcher.swift; sourceTree = "<group>"; };
 		76FB9D4127D4C5A0001EC0F5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		76FB9D4627D4C83E001EC0F5 /* DevEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevEventTableViewCell.swift; sourceTree = "<group>"; };
+		76FB9D4727D4C83E001EC0F5 /* DevEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DevEventTableViewCell.xib; sourceTree = "<group>"; };
 		76FB9D4A27D4CCBC001EC0F5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		7CE4C22F7B2C86A6473E065D /* Pods_DevEventTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevEventTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A97F43511E3A39641AEADCB2 /* Pods-DevEvent-DevEventUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevEvent-DevEventUITests.debug.xcconfig"; path = "Target Support Files/Pods-DevEvent-DevEventUITests/Pods-DevEvent-DevEventUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -405,6 +409,7 @@
 			files = (
 				76FB9CEC27D30522001EC0F5 /* LaunchScreen.storyboard in Resources */,
 				76FB9CE927D30522001EC0F5 /* Assets.xcassets in Resources */,
+				76FB9D4927D4C83E001EC0F5 /* DevEventTableViewCell.xib in Resources */,
 				76FB9CE427D30521001EC0F5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,6 +538,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76FB9D4827D4C83E001EC0F5 /* DevEventTableViewCell.swift in Sources */,
 				76FB9D4227D4C5A0001EC0F5 /* HomeViewModel.swift in Sources */,
 				76FB9D2D27D3972B001EC0F5 /* ViewModelType.swift in Sources */,
 				76FB9D2527D38AC6001EC0F5 /* UIViewController+Extension.swift in Sources */,
