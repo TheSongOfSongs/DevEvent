@@ -9,8 +9,8 @@ import UIKit
 
 class DevEventTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var hostLabel: UILabel!
     @IBOutlet weak var favoriteImageView: UIImageView!
     
     override func awakeFromNib() {
