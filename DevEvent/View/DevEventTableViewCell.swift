@@ -12,9 +12,11 @@ class DevEventTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var hostLabel: UILabel!
     @IBOutlet weak var favoriteImageView: UIImageView!
+    @IBOutlet weak var roundedBackgroundView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        roundedBackgroundView.makeCornerRounded(radius: 15)
     }
     
     override func prepareForReuse() {
