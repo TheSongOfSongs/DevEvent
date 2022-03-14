@@ -31,7 +31,12 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
                         return UITableViewCell()
                     }
             cell.titleLabel.text = devEvent.name
-            cell.hostLabel.text = devEvent.detail?.host
+            
+            if let detail = devEvent.detail {
+                cell.hostLabel.text = detail.host
+                cell.dateLabel.text = "\(detail.eventPeriodName ?? ""): \(detail.duration ?? "")"
+            }
+            
             // TODO: - 즐겨찾기 이미지 처리, long press gesture
             return cell
         })

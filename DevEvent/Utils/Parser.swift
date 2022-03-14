@@ -73,8 +73,7 @@ struct Parser {
         var category: String?
         var host: String?
         var eventPeriodName: String?
-        var startDate: String?
-        var endDate: String?
+        var duration: String?
         
         do {
             let details = try detail.select("li")
@@ -90,12 +89,12 @@ struct Parser {
                     category = detail.last
                 default: // 이벤트 기간
                     eventPeriodName = detail.first
-                    let period = (detail.last ?? "")
-                        .filter({ $0 != " " })
-                        .split(separator: "~")
-                        .map({ String($0) })
-                    startDate = period.first
-                    endDate = period.last
+                    
+                    if detail.count > 2 {
+                        duration = "\(detail[1]):\(detail[2])"
+                    } else {
+                        duration = detail.last ?? "-"
+                    }
                 }
             }
         } catch let error {
@@ -105,8 +104,7 @@ struct Parser {
         
         return EventDetail(category: category,
                            host: host,
-                           startDate: startDate,
-                           endDate: endDate,
-                           eventPeriodName: eventPeriodName)
+                           eventPeriodName: eventPeriodName,
+                           duration: duration)
     }
 }

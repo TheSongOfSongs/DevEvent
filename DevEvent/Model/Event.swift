@@ -17,7 +17,6 @@ struct Event: Identifiable {
 struct EventDetail {
     var category: String?
     var host: String?
-    var startDate: String?
-    var endDate: String?
     var eventPeriodName: String?
+    var duration: String?
 }
