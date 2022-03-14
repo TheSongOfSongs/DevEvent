@@ -21,6 +21,8 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
     private lazy var input = HomeViewModel.Input()
     private lazy var output = viewModel.transform(input: input)
     
+    var coordinator: HomeCoordinator!
+    
     var dataSources: RxTableViewSectionedReloadDataSource<SectionOfEvents> {
         let dataSoucre = RxTableViewSectionedReloadDataSource<SectionOfEvents>(configureCell: { _, tableView, indexPath, devEvent in
             guard let cell = tableView
@@ -64,6 +66,19 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
             .bind(to: tableView.rx.items(dataSource: dataSources))
             .disposed(by: disposeBag)
         
+        Observable.zip(tableView.rx.modelSelected(Event.self), tableView.rx.itemSelected)
+            .subscribe(onNext: { [weak self] event, _ in
+                self?.showWebViewController(of: event)
+            })
+            .disposed(by: disposeBag)
+        
         // TODO: - section header 추가
+    }
+    
+    func showWebViewController(of event: Event) {
+        guard let url = URL(string: event.url) else {
+                  return
+              }
+        coordinator.showWebKitViewController(of: url)
     }
 }

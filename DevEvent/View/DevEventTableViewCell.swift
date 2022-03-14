@@ -17,6 +17,7 @@ class DevEventTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         roundedBackgroundView.makeCornerRounded(radius: 15)
+        selectionStyle = .none
     }
     
     override func prepareForReuse() {

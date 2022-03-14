@@ -20,6 +20,22 @@ final class HomeCoordinator: Coordinator {
     
     func start() {
         let homeVC = HomeViewController.instantiateViewController()
+        homeVC.coordinator = self
         presenter.pushViewController(homeVC, animated: false)
+    }
+    
+    func showWebKitViewController(of url:URL) {
+        let coordinator: WebKitCoordinator = {
+            let coordinator = WebKitCoordinator(presenter: presenter)
+            coordinator.parentCoordinator = self
+            return coordinator
+        }()
+
+        self.childCoordinators.append(coordinator)
+        
+        let webVC = WebKitViewController.instantiateViewController()
+        webVC.url = url
+        webVC.coordinator = coordinator
+        presenter.pushViewController(webVC, animated: false)
     }
 }
