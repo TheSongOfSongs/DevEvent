@@ -24,7 +24,7 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
     var coordinator: HomeCoordinator!
     
     var dataSources: RxTableViewSectionedReloadDataSource<SectionOfEvents> {
-        let dataSoucre = RxTableViewSectionedReloadDataSource<SectionOfEvents>(configureCell: { _, tableView, indexPath, devEvent in
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionOfEvents>(configureCell: { _, tableView, indexPath, devEvent in
             guard let cell = tableView
                     .dequeueReusableCell(withIdentifier: DevEventTableViewCell.identifier,
                                          for: indexPath) as? DevEventTableViewCell else {
@@ -35,8 +35,12 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
             // TODO: - 즐겨찾기 이미지 처리, long press gesture
             return cell
         })
+        
+        dataSource.titleForHeaderInSection = { dataSource, index in
+            return dataSource.sectionModels[index].header
+        }
 
-        return dataSoucre
+        return dataSource
     }
     
     // MARK: - ViewLifeCycle
