@@ -296,6 +296,7 @@
 		76FB9D3427D44170001EC0F5 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				761FBA5D27E0AD210066F078 /* PersistanceManager.swift */,
 				76FB9D3527D44186001EC0F5 /* NetworkService.swift */,
 			);
 			path = Manager;
@@ -306,7 +307,6 @@
 			children = (
 				76FB9D3E27D4AAAE001EC0F5 /* DevEventsFetcher.swift */,
 				76FB9D3827D4A233001EC0F5 /* Parser.swift */,
-				761FBA5D27E0AD210066F078 /* PersistanceManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
