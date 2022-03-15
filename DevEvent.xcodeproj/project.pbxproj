@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		64B78890900C5C6DD481D90F /* Pods_DevEventTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE4C22F7B2C86A6473E065D /* Pods_DevEventTests.framework */; };
+		761FBA5B27E0A7280066F078 /* EventCoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FBA5927E0A7280066F078 /* EventCoreData+CoreDataClass.swift */; };
+		761FBA5E27E0AD210066F078 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FBA5D27E0AD210066F078 /* PersistanceManager.swift */; };
+		761FBA6127E0ADCA0066F078 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FBA6027E0ADCA0066F078 /* Entity.swift */; };
 		76FB9CDD27D30521001EC0F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9CDC27D30521001EC0F5 /* AppDelegate.swift */; };
 		76FB9CDF27D30521001EC0F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9CDE27D30521001EC0F5 /* SceneDelegate.swift */; };
 		76FB9CE427D30521001EC0F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76FB9CE227D30521001EC0F5 /* Main.storyboard */; };
@@ -64,6 +67,9 @@
 		386FA0A19EA9B80EC704F1BA /* Pods-DevEvent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevEvent.release.xcconfig"; path = "Target Support Files/Pods-DevEvent/Pods-DevEvent.release.xcconfig"; sourceTree = "<group>"; };
 		6103E50B2BDE76BB146D5AC2 /* Pods-DevEvent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevEvent.debug.xcconfig"; path = "Target Support Files/Pods-DevEvent/Pods-DevEvent.debug.xcconfig"; sourceTree = "<group>"; };
 		64F4DF495EAFED19227E031B /* Pods-DevEventTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevEventTests.debug.xcconfig"; path = "Target Support Files/Pods-DevEventTests/Pods-DevEventTests.debug.xcconfig"; sourceTree = "<group>"; };
+		761FBA5927E0A7280066F078 /* EventCoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventCoreData+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		761FBA5D27E0AD210066F078 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
+		761FBA6027E0ADCA0066F078 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		76FB9CD927D30521001EC0F5 /* DevEvent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevEvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76FB9CDC27D30521001EC0F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76FB9CDE27D30521001EC0F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +153,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		761FBA5F27E0ADBC0066F078 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				761FBA6027E0ADCA0066F078 /* Entity.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		76FB9CD027D30521001EC0F5 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				76FB9D1627D37551001EC0F5 /* Coordinator */,
+				761FBA5F27E0ADBC0066F078 /* Enum */,
 				76FB9D2827D395AC001EC0F5 /* Model */,
 				76FB9D3427D44170001EC0F5 /* Manager */,
 				76FB9D3727D4A224001EC0F5 /* Utils */,
@@ -259,6 +274,7 @@
 		76FB9D2827D395AC001EC0F5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				761FBA5927E0A7280066F078 /* EventCoreData+CoreDataClass.swift */,
 				76FB9D3027D43E79001EC0F5 /* Event.swift */,
 				76FB9D2E27D43E6A001EC0F5 /* SectionOfEvents.swift */,
 			);
@@ -287,6 +303,7 @@
 			children = (
 				76FB9D3E27D4AAAE001EC0F5 /* DevEventsFetcher.swift */,
 				76FB9D3827D4A233001EC0F5 /* Parser.swift */,
+				761FBA5D27E0AD210066F078 /* PersistanceManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -552,11 +569,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				76FB9D4827D4C83E001EC0F5 /* DevEventTableViewCell.swift in Sources */,
+				761FBA6127E0ADCA0066F078 /* Entity.swift in Sources */,
 				76FB9D4227D4C5A0001EC0F5 /* HomeViewModel.swift in Sources */,
 				76FB9D4D27D5C761001EC0F5 /* HomeViewController+UITableViewDelegate.swift in Sources */,
 				76FB9D2D27D3972B001EC0F5 /* ViewModelType.swift in Sources */,
 				76FB9D5327D5D5F1001EC0F5 /* WebKitCoordinator.swift in Sources */,
 				76FB9D5127D5CEF0001EC0F5 /* WebKitViewController.swift in Sources */,
+				761FBA5B27E0A7280066F078 /* EventCoreData+CoreDataClass.swift in Sources */,
 				76FB9D2527D38AC6001EC0F5 /* UIViewController+Extension.swift in Sources */,
 				76FB9D1A27D3758A001EC0F5 /* Coordinator.swift in Sources */,
 				76FB9D1C27D377F0001EC0F5 /* TabBarCoordinator.swift in Sources */,
@@ -565,6 +584,7 @@
 				76FB9CE727D30521001EC0F5 /* DevEvent.xcdatamodeld in Sources */,
 				76FB9D3F27D4AAAE001EC0F5 /* DevEventsFetcher.swift in Sources */,
 				76FB9CDF27D30521001EC0F5 /* SceneDelegate.swift in Sources */,
+				761FBA5E27E0AD210066F078 /* PersistanceManager.swift in Sources */,
 				76FB9D2027D389A4001EC0F5 /* HomeCoordinator.swift in Sources */,
 				76FB9D4B27D4CCBC001EC0F5 /* UIView+Extension.swift in Sources */,
 				76FB9D1E27D38978001EC0F5 /* HomeViewController.swift in Sources */,

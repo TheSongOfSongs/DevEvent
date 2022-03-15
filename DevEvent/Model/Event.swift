@@ -10,8 +10,12 @@ import Foundation
 struct Event: Identifiable {
     var id = UUID()
     var name: String = ""
-    var url: String = ""
+    var urlString: String = ""
     var detail: EventDetail?
+    
+    var url: URL? {
+        return URL(string: urlString)
+    }
 }
 
 struct EventDetail {

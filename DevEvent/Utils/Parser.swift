@@ -52,7 +52,7 @@ struct Parser {
                         let url = try link.attr("href")
                         let detail = try event.select("ul")
                         let event = Event(name: name,
-                                          url: url,
+                                          urlString: url,
                                           detail: parse(detail: detail))
                         events.append(event)
                     })
