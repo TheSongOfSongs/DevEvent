@@ -174,7 +174,7 @@
 			children = (
 				76FB9D1627D37551001EC0F5 /* Coordinator */,
 				76FB9D2827D395AC001EC0F5 /* Model */,
-				76FB9D3427D44170001EC0F5 /* Service */,
+				76FB9D3427D44170001EC0F5 /* Manager */,
 				76FB9D3727D4A224001EC0F5 /* Utils */,
 				76FB9D1227D30C8E001EC0F5 /* Storyboard */,
 				76FB9D1127D30C7C001EC0F5 /* ViewController */,
@@ -274,12 +274,12 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		76FB9D3427D44170001EC0F5 /* Service */ = {
+		76FB9D3427D44170001EC0F5 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				76FB9D3527D44186001EC0F5 /* NetworkService.swift */,
 			);
-			path = Service;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		76FB9D3727D4A224001EC0F5 /* Utils */ = {
