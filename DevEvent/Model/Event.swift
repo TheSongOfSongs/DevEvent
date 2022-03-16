@@ -10,8 +10,17 @@ import Foundation
 struct Event: Identifiable {
     var id = UUID()
     var name: String = ""
-    var url: String = ""
+    var urlString: String = ""
     var detail: EventDetail?
+    var isFavorite: Bool = false
+    
+    var url: URL? {
+        return URL(string: urlString)
+    }
+    
+    func isEqual(to eventCoreData: EventCoreData) -> Bool {
+        return name == eventCoreData.name && url == eventCoreData.url
+    }
 }
 
 struct EventDetail {

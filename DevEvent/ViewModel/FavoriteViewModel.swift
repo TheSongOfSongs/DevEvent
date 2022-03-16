@@ -1,15 +1,14 @@
 //
-//  HomeViewModel.swift
+//  FavoriteViewModel.swift
 //  DevEvent
 //
-//  Created by Jinhyang Kim on 2022/03/06.
+//  Created by Jinhyang Kim on 2022/03/16.
 //
 
 import Foundation
 import RxSwift
-import RxRelay
 
-class HomeViewModel: ViewModelType {
+class FavoriteViewModel: ViewModelType {
     
     struct Input { }
     
@@ -24,8 +23,7 @@ class HomeViewModel: ViewModelType {
     private let favoriteEvents: Observable<[EventCoreData]>
     
     let disposeBag = DisposeBag()
-
-    // MARK: - init
+    
     init() {
         let eventsFromServer: BehaviorSubject<[SectionOfEvents]> = BehaviorSubject(value: [])
         let favoriteEvents: BehaviorSubject<[EventCoreData]> = BehaviorSubject(value: [])
@@ -43,7 +41,6 @@ class HomeViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
-        
         PersistanceManager
             .shared
             .transform(input: PersistanceManager.Input())
@@ -58,16 +55,13 @@ class HomeViewModel: ViewModelType {
     }
     
     
-    // TODO: - refactor
     func transform(input: Input) -> Output {
         let dataSources = Observable.combineLatest(eventsFromServer, favoriteEvents)
             .map { eventsFromServer, favoriteEvents -> [SectionOfEvents] in
                 var eventsFromServer = eventsFromServer
                 for (i, sectionOfEvents) in eventsFromServer.enumerated() {
-                    var items = sectionOfEvents.items
-                    
-                    for(j, event) in items.enumerated() {
-                        items[j].isFavorite = favoriteEvents.contains(where: { event.isEqual(to: $0) })
+                    let items = sectionOfEvents.items.filter { event in
+                        return favoriteEvents.contains(where: { event.isEqual(to: $0) })
                     }
                     
                     eventsFromServer[i] = SectionOfEvents(header: sectionOfEvents.header,
@@ -78,10 +72,6 @@ class HomeViewModel: ViewModelType {
             }
         
         return Output(dataSources: dataSources)
-    }
-    
-    func addFavorite(event: Event) -> Single<Bool> {
-        return PersistanceManager.shared.addFavorteEvent(event)
     }
     
     func removeFavorite(event: Event) -> Single<Bool> {

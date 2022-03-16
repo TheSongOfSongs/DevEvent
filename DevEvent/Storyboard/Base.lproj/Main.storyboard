@@ -88,6 +88,48 @@
             </objects>
             <point key="canvasLocation" x="726" y="131"/>
         </scene>
+        <!--Favorite View Controller-->
+        <scene sceneID="I9s-21-zVu">
+            <objects>
+                <viewController storyboardIdentifier="FavoriteViewController" id="WMh-y2-RTr" customClass="FavoriteViewController" customModule="DevEvent" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aJb-AT-yGW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="e57-74-AND">
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="즐겨찾기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRb-Cl-Fa4">
+                                <rect key="frame" x="15" y="54" width="206" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4oz-Yx-H0w"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="h06-xx-PNZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eRb-Cl-Fa4" firstAttribute="top" secondItem="h06-xx-PNZ" secondAttribute="top" constant="10" id="5V2-G9-CyM"/>
+                            <constraint firstItem="e57-74-AND" firstAttribute="top" secondItem="eRb-Cl-Fa4" secondAttribute="bottom" id="6Bn-Cm-zYY"/>
+                            <constraint firstItem="h06-xx-PNZ" firstAttribute="trailing" secondItem="e57-74-AND" secondAttribute="trailing" id="7ix-P6-pgv"/>
+                            <constraint firstItem="h06-xx-PNZ" firstAttribute="bottom" secondItem="e57-74-AND" secondAttribute="bottom" id="AFi-lV-0sy"/>
+                            <constraint firstItem="h06-xx-PNZ" firstAttribute="trailing" secondItem="eRb-Cl-Fa4" secondAttribute="trailing" constant="193" id="M9r-I3-ep0"/>
+                            <constraint firstItem="e57-74-AND" firstAttribute="leading" secondItem="h06-xx-PNZ" secondAttribute="leading" id="Rhb-mg-SlN"/>
+                            <constraint firstItem="eRb-Cl-Fa4" firstAttribute="leading" secondItem="h06-xx-PNZ" secondAttribute="leading" constant="15" id="VWe-GQ-9wM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="e57-74-AND" id="kvC-8e-UOA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dY5-7v-7uN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1495.6521739130435" y="130.58035714285714"/>
+        </scene>
     </scenes>
     <resources>
         <image name="xmark" catalog="system" width="128" height="113"/>

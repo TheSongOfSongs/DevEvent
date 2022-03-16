@@ -1,16 +1,15 @@
 //
-//  HomeViewController.swift
+//  FavoriteViewController.swift
 //  DevEvent
 //
-//  Created by Jinhyang Kim on 2022/03/05.
+//  Created by Jinhyang Kim on 2022/03/16.
 //
 
 import UIKit
 import RxDataSources
-import RxGesture
 import RxSwift
 
-class HomeViewController: UIViewController, StoryboardInstantiable {
+class FavoriteViewController: UIViewController, StoryboardInstantiable {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -18,11 +17,11 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
     
     var disposeBag: DisposeBag = DisposeBag()
     
-    let viewModel = HomeViewModel()
-    private lazy var input = HomeViewModel.Input()
+    let viewModel = FavoriteViewModel()
+    private lazy var input = FavoriteViewModel.Input()
     private lazy var output = viewModel.transform(input: input)
     
-    var coordinator: HomeCoordinator!
+    var coordinator: FavoriteCoordinator!
     
     var dataSources: RxTableViewSectionedReloadDataSource<SectionOfEvents> {
         let dataSource = RxTableViewSectionedReloadDataSource<SectionOfEvents>(configureCell: { [weak self] _, tableView, indexPath, devEvent in
@@ -42,8 +41,7 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
 
         return dataSource
     }
-    
-    // MARK: - ViewLifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -58,14 +56,10 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
     func setupTableView() {
         let cell = UINib(nibName: DevEventTableViewCell.identifier, bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: DevEventTableViewCell.identifier)
+        tableView.delegate = self
     }
     
     func bindViewModel() {
-        tableView
-            .rx
-            .setDelegate(self)
-            .disposed(by: disposeBag)
-        
         output.dataSources
             .bind(to: tableView.rx.items(dataSource: dataSources))
             .disposed(by: disposeBag)
@@ -75,8 +69,6 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
                 self?.showWebViewController(of: event)
             })
             .disposed(by: disposeBag)
-        
-        // TODO: - section header 추가
     }
     
     func showWebViewController(of event: Event) {
@@ -85,37 +77,16 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
     }
     
     func setupCell(_ cell: DevEventTableViewCell, event: Event) {
-        cell.updateWith(event: event)
+        cell.updateWith(event: event, setFavoriteImageViewHidden: true)
         
-        // TODO: flatMap에 조건식 넣기
-        let gestureDisposable: Disposable = {
-            if event.isFavorite {
-                return cell
-                    .rx
-                    .longPressGesture()
-                    .when(.began)
-                    .flatMap({ _ in self.viewModel.removeFavorite(event: event) })
-                    .subscribe(onNext: { _ in
-                        UIDevice.vibrate()
-                        cell.favoriteImageView.isHidden = !cell.favoriteImageView.isHidden
-                    })
-            } else {
-                return cell
-                    .rx
-                    .longPressGesture()
-                    .when(.began)
-                    .flatMap({ _ in self.viewModel.addFavorite(event: event) })
-                    .subscribe(onNext: { _ in
-                        UIDevice.vibrate()
-                        cell.favoriteImageView.isHidden = !cell.favoriteImageView.isHidden
-                    })
-            }
-        }()
+        let gestureDisposable = cell.rx
+            .longPressGesture()
+            .when(.began)
+            .flatMap({ _ in self.viewModel.removeFavorite(event: event) })
+            .subscribe(onNext: { _ in
+                UIDevice.vibrate()
+            })
         
         cell.gestureDisposable.setDisposable(gestureDisposable)
-    }
-    
-    func addFavoriteEvent(_ event: Event) {
-        UIDevice.vibrate()
     }
 }

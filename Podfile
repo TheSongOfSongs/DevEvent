@@ -8,6 +8,7 @@ target 'DevEvent' do
   # Pods for DevEvent
   pod 'RxCocoa', '6.5.0'
   pod 'RxDataSources', '~> 5.0'
+  pod 'RxGesture'
   pod 'RxSwift', '6.5.0'
   pod 'SwiftSoup'
 

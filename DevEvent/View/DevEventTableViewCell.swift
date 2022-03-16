@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class DevEventTableViewCell: UITableViewCell {
     
@@ -16,12 +17,12 @@ class DevEventTableViewCell: UITableViewCell {
     @IBOutlet weak var roundedBackgroundView: UIView!
     
     var shadowLayer: CAShapeLayer?
+    var gestureDisposable = SingleAssignmentDisposable()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         roundedBackgroundView.makeCornerRounded(radius: 15)
         selectionStyle = .none
-        
     }
     
     override func layoutSubviews() {
@@ -36,9 +37,26 @@ class DevEventTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         favoriteImageView.isHidden = true
+        gestureDisposable.dispose()
+        gestureDisposable = SingleAssignmentDisposable()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func updateWith(event: Event, setFavoriteImageViewHidden: Bool? = nil) {
+        titleLabel.text = event.name
+        
+        if let detail = event.detail {
+            hostLabel.text = event.name
+            dateLabel.text = "\(detail.eventPeriodName ?? ""): \(detail.duration ?? "")"
+        }
+        
+        if let setFavoriteImageViewHidden = setFavoriteImageViewHidden {
+            favoriteImageView.isHidden = setFavoriteImageViewHidden
+        } else {
+            favoriteImageView.isHidden = !event.isFavorite
+        }
     }
 }
