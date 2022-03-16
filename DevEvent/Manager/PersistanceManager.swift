@@ -9,28 +9,46 @@ import UIKit
 import CoreData
 import Differentiator
 import RxSwift
+import RxRelay
 
 final class PersistanceManager {
+    
+    struct Input { }
+    
+    struct Output {
+        var favoriteCoreDataEvents: Observable<[EventCoreData]>
+    }
     
     static let shared = PersistanceManager()
     
     let appDelegate: AppDelegate
     let context: NSManagedObjectContext
     
+    private lazy var favoriteCoreDataEvents: BehaviorSubject<[EventCoreData]> = BehaviorSubject(value: [])
+    
+    
+    // MARK: - init
     private init() {
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         context = appDelegate.persistentContainer.viewContext
+        fetchEvents()
+    }
+
+    // MARK: -
+    func transform(input: Input) -> Output {
+        let favoriteCoreDataEvents = self.favoriteCoreDataEvents
+            .share()
+            .asObservable()
+        return Output(favoriteCoreDataEvents: favoriteCoreDataEvents)
     }
     
     /// CoreData의 모든 Event를 가져오는 메서드
-    @discardableResult
-    func fetchEvents() -> Result<[EventCoreData], Error> {
+    func fetchEvents() {
         do {
-            let event = try context.fetch(EventCoreData.fetchRequest()) as? [EventCoreData]
-            // Binding 해주기
-            return .success(event ?? [])
+            let events = try context.fetch(EventCoreData.fetchRequest())
+            self.favoriteCoreDataEvents.onNext(events)
         } catch let error {
-            return .failure(error)
+            print(error.localizedDescription)
         }
     }
     

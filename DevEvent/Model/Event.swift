@@ -17,6 +17,10 @@ struct Event: Identifiable {
     var url: URL? {
         return URL(string: urlString)
     }
+    
+    func isEqual(to eventCoreData: EventCoreData) -> Bool {
+        return name == eventCoreData.name && url == eventCoreData.url
+    }
 }
 
 struct EventDetail {
