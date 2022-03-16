@@ -45,7 +45,7 @@ class DevEventTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func updateWith(event: Event) {
+    func updateWith(event: Event, setFavoriteImageViewHidden: Bool? = nil) {
         titleLabel.text = event.name
         
         if let detail = event.detail {
@@ -53,6 +53,10 @@ class DevEventTableViewCell: UITableViewCell {
             dateLabel.text = "\(detail.eventPeriodName ?? ""): \(detail.duration ?? "")"
         }
         
-        favoriteImageView.isHidden = !event.isFavorite
+        if let setFavoriteImageViewHidden = setFavoriteImageViewHidden {
+            favoriteImageView.isHidden = setFavoriteImageViewHidden
+        } else {
+            favoriteImageView.isHidden = !event.isFavorite
+        }
     }
 }
