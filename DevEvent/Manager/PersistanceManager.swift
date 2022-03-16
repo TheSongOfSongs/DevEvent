@@ -67,6 +67,7 @@ final class PersistanceManager {
         return Single<Bool>.create { [weak self] single in
             do {
                 try self?.context.save()
+                self?.fetchEvents()
                 single(.success(true))
             } catch let error {
                 single(.failure(error))
@@ -85,6 +86,7 @@ final class PersistanceManager {
                 
                 do {
                     try self.context.save()
+                    self.fetchEvents()
                     single(.success(true))
                 } catch let error {
                     single(.failure(error))

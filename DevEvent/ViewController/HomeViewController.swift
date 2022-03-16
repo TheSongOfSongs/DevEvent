@@ -87,14 +87,30 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
     func setupCell(_ cell: DevEventTableViewCell, event: Event) {
         cell.updateWith(event: event)
         
-        let gestureDisposable = cell
-            .rx
-            .longPressGesture()
-            .when(.began)
-            .flatMap({ _ in self.viewModel.addFavorite(event: event) })
-            .subscribe(onNext: { [weak self] _ in
-                self?.addFavoriteEvent(event)
-            })
+        // TODO: flatMap에 조건식 넣기
+        let gestureDisposable: Disposable = {
+            if event.isFavorite {
+                return cell
+                    .rx
+                    .longPressGesture()
+                    .when(.began)
+                    .flatMap({ _ in self.viewModel.removeFavorite(event: event) })
+                    .subscribe(onNext: { _ in
+                        UIDevice.vibrate()
+                        cell.favoriteImageView.isHidden = !cell.favoriteImageView.isHidden
+                    })
+            } else {
+                return cell
+                    .rx
+                    .longPressGesture()
+                    .when(.began)
+                    .flatMap({ _ in self.viewModel.addFavorite(event: event) })
+                    .subscribe(onNext: { _ in
+                        UIDevice.vibrate()
+                        cell.favoriteImageView.isHidden = !cell.favoriteImageView.isHidden
+                    })
+            }
+        }()
         
         cell.gestureDisposable.setDisposable(gestureDisposable)
     }

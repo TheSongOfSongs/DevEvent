@@ -74,7 +74,7 @@ class HomeViewModel: ViewModelType {
                                 return false
                             }
                         }()
-
+                        
                         items[j].isFavorite = isFavorite
                     }
                     
@@ -84,11 +84,15 @@ class HomeViewModel: ViewModelType {
                 
                 return eventsFromServer
             }
-
+        
         return Output(dataSources: dataSources)
     }
     
     func addFavorite(event: Event) -> Single<Bool> {
         return PersistanceManager.shared.addFavorteEvent(event)
+    }
+    
+    func removeFavorite(event: Event) -> Single<Bool> {
+        return PersistanceManager.shared.removeFavoriteEvent(event)
     }
 }

@@ -53,6 +53,6 @@ class DevEventTableViewCell: UITableViewCell {
             dateLabel.text = "\(detail.eventPeriodName ?? ""): \(detail.duration ?? "")"
         }
         
-        favoriteImageView.isHidden = event.isFavorite
+        favoriteImageView.isHidden = !event.isFavorite
     }
 }
