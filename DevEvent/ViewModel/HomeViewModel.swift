@@ -38,5 +38,7 @@ class HomeViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         return Output(dataSources: dataSources.asObservable())
+    func addFavorite(event: Event) -> Single<Bool> {
+        return PersistanceManager.shared.addFavorteEvent(event)
     }
 }

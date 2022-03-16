@@ -7,6 +7,7 @@
 
 import UIKit
 import RxDataSources
+import RxGesture
 import RxSwift
 
 class HomeViewController: UIViewController, StoryboardInstantiable {
@@ -24,20 +25,14 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
     var coordinator: HomeCoordinator!
     
     var dataSources: RxTableViewSectionedReloadDataSource<SectionOfEvents> {
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionOfEvents>(configureCell: { _, tableView, indexPath, devEvent in
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionOfEvents>(configureCell: { [weak self] _, tableView, indexPath, devEvent in
             guard let cell = tableView
                     .dequeueReusableCell(withIdentifier: DevEventTableViewCell.identifier,
                                          for: indexPath) as? DevEventTableViewCell else {
                         return UITableViewCell()
                     }
-            cell.titleLabel.text = devEvent.name
             
-            if let detail = devEvent.detail {
-                cell.hostLabel.text = detail.host
-                cell.dateLabel.text = "\(detail.eventPeriodName ?? ""): \(detail.duration ?? "")"
-            }
-            
-            // TODO: - 즐겨찾기 이미지 처리, long press gesture
+            self?.setupCell(cell, event: devEvent)
             return cell
         })
         
@@ -85,9 +80,26 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
     }
     
     func showWebViewController(of event: Event) {
-        guard let url = URL(string: event.url) else {
-                  return
-              }
+        guard let url = event.url else { return }
         coordinator.showWebKitViewController(of: url)
+    }
+    
+    func setupCell(_ cell: DevEventTableViewCell, event: Event) {
+        cell.updateWith(event: event)
+        
+        let gestureDisposable = cell
+            .rx
+            .longPressGesture()
+            .when(.began)
+            .flatMap({ _ in self.viewModel.addFavorite(event: event) })
+            .subscribe(onNext: { [weak self] _ in
+                self?.addFavoriteEvent(event)
+            })
+        
+        cell.gestureDisposable.setDisposable(gestureDisposable)
+    }
+    
+    func addFavoriteEvent(_ event: Event) {
+        UIDevice.vibrate()
     }
 }
