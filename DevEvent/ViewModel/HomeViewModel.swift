@@ -67,15 +67,7 @@ class HomeViewModel: ViewModelType {
                     var items = sectionOfEvents.items
                     
                     for(j, event) in items.enumerated() {
-                        let isFavorite: Bool = {
-                            if favoriteEvents.contains(where: { event.isEqual(to: $0) }) {
-                                return true
-                            } else {
-                                return false
-                            }
-                        }()
-                        
-                        items[j].isFavorite = isFavorite
+                        items[j].isFavorite = favoriteEvents.contains(where: { event.isEqual(to: $0) })
                     }
                     
                     eventsFromServer[i] = SectionOfEvents(header: sectionOfEvents.header,
