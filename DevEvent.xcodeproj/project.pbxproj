@@ -12,6 +12,7 @@
 		761FBA5E27E0AD210066F078 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FBA5D27E0AD210066F078 /* PersistanceManager.swift */; };
 		761FBA6127E0ADCA0066F078 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FBA6027E0ADCA0066F078 /* Entity.swift */; };
 		761FBA6327E0BC780066F078 /* EventCoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FBA6227E0BC780066F078 /* EventCoreData+CoreDataProperties.swift */; };
+		761FBA6527E0C2D30066F078 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FBA6427E0C2D30066F078 /* UIDevice+Extension.swift */; };
 		76FB9CDD27D30521001EC0F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9CDC27D30521001EC0F5 /* AppDelegate.swift */; };
 		76FB9CDF27D30521001EC0F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9CDE27D30521001EC0F5 /* SceneDelegate.swift */; };
 		76FB9CE427D30521001EC0F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76FB9CE227D30521001EC0F5 /* Main.storyboard */; };
@@ -72,6 +73,7 @@
 		761FBA5D27E0AD210066F078 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		761FBA6027E0ADCA0066F078 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		761FBA6227E0BC780066F078 /* EventCoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventCoreData+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		761FBA6427E0C2D30066F078 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		76FB9CD927D30521001EC0F5 /* DevEvent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevEvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76FB9CDC27D30521001EC0F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76FB9CDE27D30521001EC0F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				76FB9D3A27D4A3B1001EC0F5 /* String+Extension.swift */,
+				761FBA6427E0C2D30066F078 /* UIDevice+Extension.swift */,
 				76FB9D2627D38B67001EC0F5 /* UIStoryboard+Extension.swift */,
 				76FB9D4A27D4CCBC001EC0F5 /* UIView+Extension.swift */,
 				76FB9D2427D38AC6001EC0F5 /* UIViewController+Extension.swift */,
@@ -593,6 +596,7 @@
 				76FB9D4B27D4CCBC001EC0F5 /* UIView+Extension.swift in Sources */,
 				76FB9D1E27D38978001EC0F5 /* HomeViewController.swift in Sources */,
 				76FB9D2F27D43E6A001EC0F5 /* SectionOfEvents.swift in Sources */,
+				761FBA6527E0C2D30066F078 /* UIDevice+Extension.swift in Sources */,
 				76FB9D2727D38B67001EC0F5 /* UIStoryboard+Extension.swift in Sources */,
 				76FB9D3627D44186001EC0F5 /* NetworkService.swift in Sources */,
 				76FB9D3B27D4A3B1001EC0F5 /* String+Extension.swift in Sources */,
