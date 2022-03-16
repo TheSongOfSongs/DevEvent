@@ -12,6 +12,7 @@ struct Event: Identifiable {
     var name: String = ""
     var urlString: String = ""
     var detail: EventDetail?
+    var isFavorite: Bool = false
     
     var url: URL? {
         return URL(string: urlString)
