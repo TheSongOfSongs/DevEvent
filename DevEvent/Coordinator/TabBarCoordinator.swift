@@ -114,9 +114,11 @@ final class TabBarCoordinator: Coordinator {
             favoriteCoordinator.parentCoordinator = self
             favoriteCoordinator.start()
             childCoordinators.append(favoriteCoordinator)
-            break
         case .info:
-            break
+            let infoCoordinator = InfoCoordinator(presenter: navigationController)
+            infoCoordinator.parentCoordinator = self
+            infoCoordinator.start()
+            childCoordinators.append(infoCoordinator)
         }
         
         return navigationController
