@@ -11,6 +11,7 @@ target 'DevEvent' do
   pod 'RxGesture'
   pod 'RxSwift', '6.5.0'
   pod 'SwiftSoup'
+  pod 'Toaster'
 
   target 'DevEventTests' do
     inherit! :search_paths
