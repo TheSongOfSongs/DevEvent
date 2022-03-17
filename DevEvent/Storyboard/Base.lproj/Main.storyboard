@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -14,15 +14,15 @@
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="DevEvent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vXA-at-o7F">
-                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개발자 행사 🎉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdG-8X-dwC">
-                                <rect key="frame" x="15" y="54" width="399" height="40"/>
+                                <rect key="frame" x="15" y="10" width="360" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="HXc-N8-QqG"/>
                                 </constraints>
@@ -56,11 +56,11 @@
             <objects>
                 <viewController storyboardIdentifier="WebKitViewController" id="hAB-iV-Mw1" customClass="WebKitViewController" customModule="DevEvent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ILK-Rn-jAX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ydm-Id-tca">
-                                <rect key="frame" x="0.0" y="44" width="40" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="NYC-1Q-EMX"/>
                                     <constraint firstAttribute="width" secondItem="Ydm-Id-tca" secondAttribute="height" multiplier="1:1" id="ZTk-JQ-1Rk"/>
@@ -93,15 +93,15 @@
             <objects>
                 <viewController storyboardIdentifier="FavoriteViewController" id="WMh-y2-RTr" customClass="FavoriteViewController" customModule="DevEvent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aJb-AT-yGW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="e57-74-AND">
-                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="587"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="즐겨찾기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRb-Cl-Fa4">
-                                <rect key="frame" x="15" y="54" width="206" height="40"/>
+                                <rect key="frame" x="15" y="10" width="167" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4oz-Yx-H0w"/>
                                 </constraints>
@@ -109,17 +109,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="홈에서 이벤트를 꾹-! 누르면 즐겨찾기 추가/해제가 됩니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yb-qi-WaA">
+                                <rect key="frame" x="15" y="60" width="317" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="h06-xx-PNZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="5yb-qi-WaA" firstAttribute="leading" secondItem="eRb-Cl-Fa4" secondAttribute="leading" id="57Z-Yp-eLs"/>
                             <constraint firstItem="eRb-Cl-Fa4" firstAttribute="top" secondItem="h06-xx-PNZ" secondAttribute="top" constant="10" id="5V2-G9-CyM"/>
-                            <constraint firstItem="e57-74-AND" firstAttribute="top" secondItem="eRb-Cl-Fa4" secondAttribute="bottom" id="6Bn-Cm-zYY"/>
+                            <constraint firstItem="e57-74-AND" firstAttribute="top" secondItem="eRb-Cl-Fa4" secondAttribute="bottom" constant="30" id="6Bn-Cm-zYY"/>
                             <constraint firstItem="h06-xx-PNZ" firstAttribute="trailing" secondItem="e57-74-AND" secondAttribute="trailing" id="7ix-P6-pgv"/>
                             <constraint firstItem="h06-xx-PNZ" firstAttribute="bottom" secondItem="e57-74-AND" secondAttribute="bottom" id="AFi-lV-0sy"/>
                             <constraint firstItem="h06-xx-PNZ" firstAttribute="trailing" secondItem="eRb-Cl-Fa4" secondAttribute="trailing" constant="193" id="M9r-I3-ep0"/>
                             <constraint firstItem="e57-74-AND" firstAttribute="leading" secondItem="h06-xx-PNZ" secondAttribute="leading" id="Rhb-mg-SlN"/>
                             <constraint firstItem="eRb-Cl-Fa4" firstAttribute="leading" secondItem="h06-xx-PNZ" secondAttribute="leading" constant="15" id="VWe-GQ-9wM"/>
+                            <constraint firstItem="5yb-qi-WaA" firstAttribute="top" secondItem="eRb-Cl-Fa4" secondAttribute="bottom" constant="10" id="ne1-Cl-Ynk"/>
                         </constraints>
                     </view>
                     <connections>
@@ -135,11 +143,11 @@
             <objects>
                 <viewController storyboardIdentifier="InfoViewController" id="kdi-cH-kML" customClass="InfoViewController" customModule="DevEvent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dZz-PB-lFH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앱 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVq-fq-wYy">
-                                <rect key="frame" x="20" y="54" width="394" height="40"/>
+                                <rect key="frame" x="20" y="10" width="355" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="k6g-nl-o5a"/>
                                 </constraints>
@@ -148,7 +156,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SSb-Qh-Yxc">
-                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
+                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
