@@ -130,6 +130,53 @@
             </objects>
             <point key="canvasLocation" x="1495.6521739130435" y="130.58035714285714"/>
         </scene>
+        <!--Info View Controller-->
+        <scene sceneID="ICp-e1-GTJ">
+            <objects>
+                <viewController storyboardIdentifier="InfoViewController" id="kdi-cH-kML" customClass="InfoViewController" customModule="DevEvent" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dZz-PB-lFH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앱 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVq-fq-wYy">
+                                <rect key="frame" x="20" y="54" width="394" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="k6g-nl-o5a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SSb-Qh-Yxc">
+                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="kdi-cH-kML" id="wY3-Qb-mPI"/>
+                                    <outlet property="delegate" destination="kdi-cH-kML" id="uVy-Ok-akf"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="oNK-8z-NyJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oNK-8z-NyJ" firstAttribute="trailing" secondItem="SSb-Qh-Yxc" secondAttribute="trailing" id="9Bz-bA-Y2u"/>
+                            <constraint firstItem="oNK-8z-NyJ" firstAttribute="trailing" secondItem="SVq-fq-wYy" secondAttribute="trailing" id="Dy2-TT-2bL"/>
+                            <constraint firstItem="SVq-fq-wYy" firstAttribute="leading" secondItem="oNK-8z-NyJ" secondAttribute="leading" constant="20" id="ELg-jk-1ds"/>
+                            <constraint firstItem="SSb-Qh-Yxc" firstAttribute="top" secondItem="SVq-fq-wYy" secondAttribute="bottom" constant="10" id="P4N-EV-TmO"/>
+                            <constraint firstItem="oNK-8z-NyJ" firstAttribute="bottom" secondItem="SSb-Qh-Yxc" secondAttribute="bottom" id="Z0m-yM-AsF"/>
+                            <constraint firstItem="SVq-fq-wYy" firstAttribute="top" secondItem="oNK-8z-NyJ" secondAttribute="top" constant="10" id="j2V-Ip-dfg"/>
+                            <constraint firstItem="SSb-Qh-Yxc" firstAttribute="leading" secondItem="oNK-8z-NyJ" secondAttribute="leading" id="mk5-hD-vI1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="SSb-Qh-Yxc" id="UFM-SW-dIZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lQh-qS-2i8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2300" y="131"/>
+        </scene>
     </scenes>
     <resources>
         <image name="xmark" catalog="system" width="128" height="113"/>
