@@ -105,9 +105,7 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
             })
             .disposed(by: disposeBag)
         
-        NetworkConnectionManager
-            .shared
-            .isConnectedNetwork
+        output.isNetworkConnect
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] isConnected in
                 guard let self = self else { return }

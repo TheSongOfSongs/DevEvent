@@ -20,8 +20,12 @@ class FavoriteViewController: UIViewController, StoryboardInstantiable {
     var disposeBag: DisposeBag = DisposeBag()
     
     let viewModel = FavoriteViewModel()
-    private lazy var input = FavoriteViewModel.Input()
+    private lazy var requestFetchingEvents: PublishSubject<Void> = PublishSubject()
+    private lazy var input = FavoriteViewModel.Input(requestFetchingEvents:
+                                                        requestFetchingEvents.asObservable())
     private lazy var output = viewModel.transform(input: input)
+    
+    private var isNetworkConnect: Bool = true
     
     var coordinator: FavoriteCoordinator!
     
@@ -85,9 +89,30 @@ class FavoriteViewController: UIViewController, StoryboardInstantiable {
                 self?.showWebViewController(of: event)
             })
             .disposed(by: disposeBag)
+        
+        output.isNetworkConnect
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] isNetworkConnect in
+                guard let self = self else { return }
+                
+                self.isNetworkConnect = isNetworkConnect
+                
+                guard isNetworkConnect else {
+                    return
+                }
+                
+                self.requestFetchingEvents
+                    .onNext(())
+            })
+            .disposed(by: disposeBag)
     }
     
     func showWebViewController(of event: Event) {
+        guard isNetworkConnect else {
+            self.showToast(.checkNetwork)
+            return
+        }
+        
         guard let url = event.url else { return }
         coordinator.showWebKitViewController(of: url)
     }

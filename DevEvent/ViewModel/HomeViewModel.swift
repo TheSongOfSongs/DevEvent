@@ -17,6 +17,7 @@ class HomeViewModel: ViewModelType {
     
     struct Output {
         var dataSources: Observable<[SectionOfEvents]>
+        var isNetworkConnect: Observable<Bool>
     }
     
     private lazy var input = PersistanceManager.Input()
@@ -57,7 +58,8 @@ class HomeViewModel: ViewModelType {
                 return eventsFromServer
             }
         
-        return Output(dataSources: dataSources)
+        return Output(dataSources: dataSources,
+                      isNetworkConnect: NetworkConnectionManager.shared.isConnectedNetwork)
     }
     
     func fetchAllEvents() {

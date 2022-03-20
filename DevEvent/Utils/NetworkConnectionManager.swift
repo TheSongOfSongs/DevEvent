@@ -28,6 +28,7 @@ final class NetworkConnectionManager {
     private init () {
         connectionMonitor = NWPathMonitor()
         isConnectedNetwork = isConnectedNetworkRelay
+            .share()
             .asObservable()
     }
     

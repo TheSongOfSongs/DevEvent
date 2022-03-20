@@ -11,10 +11,13 @@ import RxRelay
 
 class FavoriteViewModel: ViewModelType {
     
-    struct Input { }
+    struct Input {
+        var requestFetchingEvents: Observable<Void>
+    }
     
     struct Output {
         var dataSources: Observable<[SectionOfEvents]>
+        var isNetworkConnect: Observable<Bool>
     }
     
     private lazy var input = PersistanceManager.Input()
@@ -26,6 +29,10 @@ class FavoriteViewModel: ViewModelType {
     let disposeBag = DisposeBag()
     
     init() {
+        fetchFavoriteEvents()
+    }
+    
+    private func fetchFavoriteEvents() {
         DevEventsFetcher()
             .devEvents
             .subscribe(onNext: { sectionOfEvents in
@@ -49,8 +56,15 @@ class FavoriteViewModel: ViewModelType {
             .disposed(by: disposeBag)
     }
     
-    
     func transform(input: Input) -> Output {
+        // Input
+        input.requestFetchingEvents
+            .subscribe(onNext: { _ in
+                self.fetchFavoriteEvents()
+            })
+            .disposed(by: disposeBag)
+        
+        // Output
         let relay: BehaviorRelay<[SectionOfEvents]> = BehaviorRelay(value: [])
         
         let dataSources = Observable.combineLatest(eventsFromServer, favoriteEvents)
@@ -74,7 +88,8 @@ class FavoriteViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
-        return Output(dataSources: relay.asObservable())
+        return Output(dataSources: relay.asObservable(),
+                      isNetworkConnect: NetworkConnectionManager.shared.isConnectedNetwork)
     }
     
     func removeFavorite(event: Event) -> Single<Bool> {
