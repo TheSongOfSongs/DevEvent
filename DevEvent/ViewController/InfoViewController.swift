@@ -22,7 +22,7 @@ class InfoViewController: UIViewController, StoryboardInstantiable {
     var cellTexts: [CellTexts] = []
     
     var appStoreVersion: String? {
-        let bundleId = "com.brave.DevEvent"
+        let bundleId = "brave.jin.devEvent"
         guard let url = URL(string: "http://itunes.apple.com/lookup?bundleId=\(bundleId)"),
               let data = try? Data(contentsOf: url),
               let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
