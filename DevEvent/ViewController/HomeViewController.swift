@@ -10,11 +10,13 @@ import RxDataSources
 import RxGesture
 import RxSwift
 import RxRelay
+import Toaster
 
 class HomeViewController: UIViewController, StoryboardInstantiable {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var networkConnectionLabel: UILabel!
     
     static var defaultFileName: String = "Main"
     
@@ -31,6 +33,8 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
     var coordinator: HomeCoordinator!
     
     private var refreshControl = UIRefreshControl()
+    
+    private var isNetworkConnect: Bool = true
     
     var dataSources: RxTableViewSectionedReloadDataSource<SectionOfEvents> {
         let dataSource = RxTableViewSectionedReloadDataSource<SectionOfEvents>(configureCell: { [weak self] _, tableView, indexPath, devEvent in
@@ -83,6 +87,7 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
             .share(replay: 1, scope: .whileConnected)
         
         dataSources
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.activityIndicatorView.isHidden = true
@@ -99,9 +104,43 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
                 self?.showWebViewController(of: event)
             })
             .disposed(by: disposeBag)
+        
+        NetworkConnectionManager
+            .shared
+            .isConnectedNetwork
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] isConnected in
+                guard let self = self else { return }
+                
+                self.isNetworkConnect = isConnected
+                
+                guard !isConnected else {
+                    self.reloadEventsData()
+                    self.networkConnectionLabel.isHidden = true
+                    self.tableView.isHidden = false
+                    return
+                }
+                
+                // TODO: 더 나은 조건식 찾기 (dataSources 바로 가져올 수 있도록)
+                if self.tableView.visibleCells.isEmpty {
+                    // 데이터를 로드한 적이 없는 경우
+                    self.networkConnectionLabel.isHidden = false
+                    self.activityIndicatorView.isHidden = true
+                    self.tableView.isHidden = true
+                } else {
+                    // 데이터를 로드해서 이미 dataSources가 존재하는 경우
+                    self.showToast(.checkNetwork)
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     func showWebViewController(of event: Event) {
+        guard isNetworkConnect else {
+            self.showToast(.checkNetwork)
+            return
+        }
+        
         guard let url = event.url else { return }
         coordinator.showWebKitViewController(of: url)
     }

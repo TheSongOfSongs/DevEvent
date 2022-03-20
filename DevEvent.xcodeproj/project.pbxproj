@@ -21,6 +21,8 @@
 		763346B627E23ECA00F8BB04 /* InfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763346B527E23ECA00F8BB04 /* InfoCoordinator.swift */; };
 		763346B927E240B200F8BB04 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763346B727E240B200F8BB04 /* InfoTableViewCell.swift */; };
 		763346BA27E240B200F8BB04 /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763346B827E240B200F8BB04 /* InfoTableViewCell.xib */; };
+		763346BC27E357D100F8BB04 /* NetworkConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763346BB27E357D100F8BB04 /* NetworkConnectionManager.swift */; };
+		76B5516327E758D700D66BB8 /* ToasterMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B5516227E758D700D66BB8 /* ToasterMessage.swift */; };
 		76FB9CDD27D30521001EC0F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9CDC27D30521001EC0F5 /* AppDelegate.swift */; };
 		76FB9CDF27D30521001EC0F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9CDE27D30521001EC0F5 /* SceneDelegate.swift */; };
 		76FB9CE427D30521001EC0F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76FB9CE227D30521001EC0F5 /* Main.storyboard */; };
@@ -90,6 +92,8 @@
 		763346B527E23ECA00F8BB04 /* InfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCoordinator.swift; sourceTree = "<group>"; };
 		763346B727E240B200F8BB04 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		763346B827E240B200F8BB04 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
+		763346BB27E357D100F8BB04 /* NetworkConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnectionManager.swift; sourceTree = "<group>"; };
+		76B5516227E758D700D66BB8 /* ToasterMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToasterMessage.swift; sourceTree = "<group>"; };
 		76FB9CD927D30521001EC0F5 /* DevEvent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevEvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76FB9CDC27D30521001EC0F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76FB9CDE27D30521001EC0F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				761FBA6027E0ADCA0066F078 /* Entity.swift */,
+				76B5516227E758D700D66BB8 /* ToasterMessage.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 			children = (
 				76FB9D3E27D4AAAE001EC0F5 /* DevEventsFetcher.swift */,
 				76FB9D3827D4A233001EC0F5 /* Parser.swift */,
+				763346BB27E357D100F8BB04 /* NetworkConnectionManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -609,6 +615,7 @@
 				76FB9D5127D5CEF0001EC0F5 /* WebKitViewController.swift in Sources */,
 				763346B027E2338E00F8BB04 /* FavoriteCoordinator.swift in Sources */,
 				761FBA5B27E0A7280066F078 /* EventCoreData+CoreDataClass.swift in Sources */,
+				76B5516327E758D700D66BB8 /* ToasterMessage.swift in Sources */,
 				76FB9D2527D38AC6001EC0F5 /* UIViewController+Extension.swift in Sources */,
 				763346B627E23ECA00F8BB04 /* InfoCoordinator.swift in Sources */,
 				763346AC27E22FBB00F8BB04 /* FavoriteViewController.swift in Sources */,
@@ -616,6 +623,7 @@
 				763346B227E2362E00F8BB04 /* FavoriteViewController+UITableViewDelegate.swift in Sources */,
 				76FB9D1C27D377F0001EC0F5 /* TabBarCoordinator.swift in Sources */,
 				76FB9D4027D4C17D001EC0F5 /* Parser.swift in Sources */,
+				763346BC27E357D100F8BB04 /* NetworkConnectionManager.swift in Sources */,
 				76FB9CDD27D30521001EC0F5 /* AppDelegate.swift in Sources */,
 				76FB9CE727D30521001EC0F5 /* DevEvent.xcdatamodeld in Sources */,
 				76FB9D3F27D4AAAE001EC0F5 /* DevEventsFetcher.swift in Sources */,
