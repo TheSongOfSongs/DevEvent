@@ -49,7 +49,7 @@ class DevEventTableViewCell: UITableViewCell {
         titleLabel.text = event.name
         
         if let detail = event.detail {
-            hostLabel.text = event.name
+            hostLabel.text = event.detail?.host
             dateLabel.text = "\(detail.eventPeriodName ?? ""): \(detail.duration ?? "")"
         }
         
