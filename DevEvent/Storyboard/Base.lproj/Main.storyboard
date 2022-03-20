@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vXA-at-o7F">
-                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개발자 행사 🎉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdG-8X-dwC">
@@ -37,7 +37,7 @@
                             <constraint firstItem="FdG-8X-dwC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="0pX-Uv-6Gr"/>
                             <constraint firstItem="vXA-at-o7F" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="R6U-xB-K0Z"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vXA-at-o7F" secondAttribute="trailing" id="ZED-b8-tvy"/>
-                            <constraint firstItem="vXA-at-o7F" firstAttribute="top" secondItem="FdG-8X-dwC" secondAttribute="bottom" id="dUU-kl-ale"/>
+                            <constraint firstItem="vXA-at-o7F" firstAttribute="top" secondItem="FdG-8X-dwC" secondAttribute="bottom" constant="10" id="dUU-kl-ale"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FdG-8X-dwC" secondAttribute="trailing" id="drr-WJ-V07"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vXA-at-o7F" secondAttribute="bottom" id="dub-E6-X4s"/>
                             <constraint firstItem="FdG-8X-dwC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="urd-KL-fT8"/>

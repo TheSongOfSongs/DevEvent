@@ -9,6 +9,7 @@ import UIKit
 import RxDataSources
 import RxGesture
 import RxSwift
+import RxRelay
 
 class HomeViewController: UIViewController, StoryboardInstantiable {
     
@@ -18,11 +19,17 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
     
     var disposeBag: DisposeBag = DisposeBag()
     
+    
+    // MARK: ViewModel
     let viewModel = HomeViewModel()
-    private lazy var input = HomeViewModel.Input()
+    private lazy var requestFetchingEvents: PublishSubject<Void> = PublishSubject()
+    private lazy var input = HomeViewModel.Input(requestFetchingEvents:
+                                                    requestFetchingEvents.asObservable())
     private lazy var output = viewModel.transform(input: input)
     
     var coordinator: HomeCoordinator!
+    
+    private var refreshControl = UIRefreshControl()
     
     var dataSources: RxTableViewSectionedReloadDataSource<SectionOfEvents> {
         let dataSource = RxTableViewSectionedReloadDataSource<SectionOfEvents>(configureCell: { [weak self] _, tableView, indexPath, devEvent in
@@ -56,8 +63,13 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
     
     // MARK: -
     func setupTableView() {
+        // cell 등록
         let cell = UINib(nibName: DevEventTableViewCell.identifier, bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: DevEventTableViewCell.identifier)
+        
+        // refrehsControl
+        refreshControl.addTarget(self, action: #selector(reloadEventsData), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
     
     func bindViewModel() {
@@ -66,8 +78,17 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
             .setDelegate(self)
             .disposed(by: disposeBag)
         
-        output.dataSources
-            .bind(to: tableView.rx.items(dataSource: dataSources))
+        let dataSources = output.dataSources
+            .share()
+        
+        dataSources
+            .bind(to: tableView.rx.items(dataSource: self.dataSources))
+            .disposed(by: disposeBag)
+        
+        dataSources
+            .subscribe(onNext: { [weak self] _ in
+                self?.refreshControl.endRefreshing()
+            })
             .disposed(by: disposeBag)
         
         Observable.zip(tableView.rx.modelSelected(Event.self), tableView.rx.itemSelected)
@@ -117,5 +138,10 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
     
     func addFavoriteEvent(_ event: Event) {
         UIDevice.vibrate()
+    }
+    
+    @objc func reloadEventsData() {
+        requestFetchingEvents
+            .onNext(())
     }
 }

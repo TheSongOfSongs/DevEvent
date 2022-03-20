@@ -11,7 +11,9 @@ import RxRelay
 
 class HomeViewModel: ViewModelType {
     
-    struct Input { }
+    struct Input {
+        var requestFetchingEvents: Observable<Void>
+    }
     
     struct Output {
         var dataSources: Observable<[SectionOfEvents]>
@@ -20,46 +22,24 @@ class HomeViewModel: ViewModelType {
     private lazy var input = PersistanceManager.Input()
     private lazy var output = PersistanceManager.shared.transform(input: input)
     
-    private let eventsFromServer: Observable<[SectionOfEvents]>
-    private let favoriteEvents: Observable<[EventCoreData]>
+    private let eventsFromServer: BehaviorRelay<[SectionOfEvents]> = BehaviorRelay(value: [])
+    private let favoriteEvents: BehaviorRelay<[EventCoreData]> = BehaviorRelay(value: [])
     
     let disposeBag = DisposeBag()
 
     // MARK: - init
     init() {
-        let eventsFromServer: BehaviorSubject<[SectionOfEvents]> = BehaviorSubject(value: [])
-        let favoriteEvents: BehaviorSubject<[EventCoreData]> = BehaviorSubject(value: [])
-        
-        self.eventsFromServer = eventsFromServer.share()
-        self.favoriteEvents = favoriteEvents.share()
-        
-        DevEventsFetcher()
-            .devEvents
-            .subscribe(onNext: { sectionOfEvents in
-                eventsFromServer.onNext(sectionOfEvents)
-            }, onError: { error in
-                // TODO: - 에러 핸들링
-                print("🍎 error:\(error.localizedDescription)")
-            })
-            .disposed(by: disposeBag)
-        
-        
-        PersistanceManager
-            .shared
-            .transform(input: PersistanceManager.Input())
-            .favoriteCoreDataEvents
-            .subscribe (onNext: { eventCoreData in
-                favoriteEvents.onNext(eventCoreData)
-            }, onError: { error in
-                // TODO: - 에러 핸들링
-                print("🍎 error:\(error.localizedDescription)")
-            })
-            .disposed(by: disposeBag)
+        fetchAllEvents()
     }
-    
     
     // TODO: - refactor
     func transform(input: Input) -> Output {
+        input.requestFetchingEvents
+            .subscribe(onNext: { _ in
+                self.fetchAllEvents()
+            })
+            .disposed(by: disposeBag)
+        
         let dataSources = Observable.combineLatest(eventsFromServer, favoriteEvents)
             .map { eventsFromServer, favoriteEvents -> [SectionOfEvents] in
                 var eventsFromServer = eventsFromServer
@@ -78,6 +58,31 @@ class HomeViewModel: ViewModelType {
             }
         
         return Output(dataSources: dataSources)
+    }
+    
+    func fetchAllEvents() {
+        DevEventsFetcher()
+            .devEvents
+            .subscribe(onNext: { sectionOfEvents in
+                self.eventsFromServer.accept(sectionOfEvents)
+            }, onError: { error in
+                // TODO: - 에러 핸들링
+                print("🍎 error:\(error.localizedDescription)")
+            })
+            .disposed(by: disposeBag)
+        
+        
+        PersistanceManager
+            .shared
+            .transform(input: PersistanceManager.Input())
+            .favoriteCoreDataEvents
+            .subscribe (onNext: { eventCoreData in
+                self.favoriteEvents.accept(eventCoreData)
+            }, onError: { error in
+                // TODO: - 에러 핸들링
+                print("🍎 error:\(error.localizedDescription)")
+            })
+            .disposed(by: disposeBag)
     }
     
     func addFavorite(event: Event) -> Single<Bool> {
