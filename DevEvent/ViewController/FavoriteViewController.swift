@@ -63,7 +63,6 @@ class FavoriteViewController: UIViewController, StoryboardInstantiable {
     func bindViewModel() {
         let dataSources = output
             .dataSources
-            .share(replay: 1, scope: .whileConnected)
         
         dataSources
             .subscribe(onNext: { sectionOfEvents in

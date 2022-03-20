@@ -96,8 +96,6 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
                 self?.showWebViewController(of: event)
             })
             .disposed(by: disposeBag)
-        
-        // TODO: - section header 추가
     }
     
     func showWebViewController(of event: Event) {
