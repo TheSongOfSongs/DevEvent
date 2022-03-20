@@ -65,7 +65,7 @@ class FavoriteViewModel: ViewModelType {
                                                           items: items)
                 }
                 
-                return eventsFromServer
+                return eventsFromServer.filter({ !$0.items.isEmpty })
             }
         
         dataSources

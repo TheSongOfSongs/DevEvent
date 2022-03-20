@@ -21,6 +21,9 @@
                                 <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="7OZ-Q9-cuM">
+                                <rect key="frame" x="169" y="345" width="37" height="37"/>
+                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개발자 행사 🎉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdG-8X-dwC">
                                 <rect key="frame" x="15" y="10" width="360" height="40"/>
                                 <constraints>
@@ -35,7 +38,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="FdG-8X-dwC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="0pX-Uv-6Gr"/>
+                            <constraint firstItem="7OZ-Q9-cuM" firstAttribute="centerX" secondItem="vXA-at-o7F" secondAttribute="centerX" id="Db5-ad-SGU"/>
                             <constraint firstItem="vXA-at-o7F" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="R6U-xB-K0Z"/>
+                            <constraint firstItem="7OZ-Q9-cuM" firstAttribute="centerY" secondItem="vXA-at-o7F" secondAttribute="centerY" id="Z8i-gq-32z"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vXA-at-o7F" secondAttribute="trailing" id="ZED-b8-tvy"/>
                             <constraint firstItem="vXA-at-o7F" firstAttribute="top" secondItem="FdG-8X-dwC" secondAttribute="bottom" constant="10" id="dUU-kl-ale"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FdG-8X-dwC" secondAttribute="trailing" id="drr-WJ-V07"/>
@@ -44,6 +49,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="7OZ-Q9-cuM" id="TxP-Nt-WiR"/>
                         <outlet property="tableView" destination="vXA-at-o7F" id="jwT-Yx-bUq"/>
                     </connections>
                 </viewController>
@@ -106,6 +112,9 @@
                                 <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Gfs-qk-5tL">
+                                <rect key="frame" x="169" y="340" width="37" height="37"/>
+                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="즐겨찾기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRb-Cl-Fa4">
                                 <rect key="frame" x="15" y="10" width="167" height="40"/>
                                 <constraints>
@@ -119,6 +128,7 @@
                         <viewLayoutGuide key="safeArea" id="h06-xx-PNZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Gfs-qk-5tL" firstAttribute="centerX" secondItem="e57-74-AND" secondAttribute="centerX" id="16f-ff-97U"/>
                             <constraint firstItem="5yb-qi-WaA" firstAttribute="centerY" secondItem="e57-74-AND" secondAttribute="centerY" id="1LT-fU-UZx"/>
                             <constraint firstItem="eRb-Cl-Fa4" firstAttribute="top" secondItem="h06-xx-PNZ" secondAttribute="top" constant="10" id="5V2-G9-CyM"/>
                             <constraint firstItem="e57-74-AND" firstAttribute="top" secondItem="eRb-Cl-Fa4" secondAttribute="bottom" id="6Bn-Cm-zYY"/>
@@ -128,9 +138,11 @@
                             <constraint firstItem="h06-xx-PNZ" firstAttribute="trailing" secondItem="eRb-Cl-Fa4" secondAttribute="trailing" constant="193" id="M9r-I3-ep0"/>
                             <constraint firstItem="e57-74-AND" firstAttribute="leading" secondItem="h06-xx-PNZ" secondAttribute="leading" id="Rhb-mg-SlN"/>
                             <constraint firstItem="eRb-Cl-Fa4" firstAttribute="leading" secondItem="h06-xx-PNZ" secondAttribute="leading" constant="15" id="VWe-GQ-9wM"/>
+                            <constraint firstItem="Gfs-qk-5tL" firstAttribute="centerY" secondItem="e57-74-AND" secondAttribute="centerY" id="qLC-uV-Mxu"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="Gfs-qk-5tL" id="ctO-lV-Xql"/>
                         <outlet property="favoriteGuideLabel" destination="5yb-qi-WaA" id="nLa-7t-znI"/>
                         <outlet property="tableView" destination="e57-74-AND" id="kvC-8e-UOA"/>
                     </connections>

@@ -14,6 +14,7 @@ import RxRelay
 class HomeViewController: UIViewController, StoryboardInstantiable {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     static var defaultFileName: String = "Main"
     
@@ -79,16 +80,18 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
             .disposed(by: disposeBag)
         
         let dataSources = output.dataSources
-            .share()
-        
-        dataSources
-            .bind(to: tableView.rx.items(dataSource: self.dataSources))
-            .disposed(by: disposeBag)
+            .share(replay: 1, scope: .whileConnected)
         
         dataSources
             .subscribe(onNext: { [weak self] _ in
-                self?.refreshControl.endRefreshing()
+                guard let self = self else { return }
+                self.activityIndicatorView.isHidden = true
+                self.refreshControl.endRefreshing()
             })
+            .disposed(by: disposeBag)
+        
+        dataSources
+            .bind(to: tableView.rx.items(dataSource: self.dataSources))
             .disposed(by: disposeBag)
         
         Observable.zip(tableView.rx.modelSelected(Event.self), tableView.rx.itemSelected)
