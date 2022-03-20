@@ -12,6 +12,7 @@ import RxSwift
 class FavoriteViewController: UIViewController, StoryboardInstantiable {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var favoriteGuideLabel: UILabel!
     
     static var defaultFileName: String = "Main"
     
@@ -60,10 +61,22 @@ class FavoriteViewController: UIViewController, StoryboardInstantiable {
     }
     
     func bindViewModel() {
-        output.dataSources
-            .bind(to: tableView.rx.items(dataSource: dataSources))
+        let dataSources = output
+            .dataSources
+            .share(replay: 1, scope: .whileConnected)
+        
+        dataSources
+            .subscribe(onNext: { sectionOfEvents in
+                let isFavoriteEmpty = sectionOfEvents.flatMap({$0.items}).isEmpty
+                self.tableView.isHidden = isFavoriteEmpty
+                self.favoriteGuideLabel.isHidden = !isFavoriteEmpty
+            })
             .disposed(by: disposeBag)
         
+        dataSources
+            .bind(to: tableView.rx.items(dataSource: self.dataSources))
+            .disposed(by: disposeBag)
+
         Observable.zip(tableView.rx.modelSelected(Event.self), tableView.rx.itemSelected)
             .subscribe(onNext: { [weak self] event, _ in
                 self?.showWebViewController(of: event)
