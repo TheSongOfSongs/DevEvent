@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 
 class FavoriteViewModel: ViewModelType {
     
@@ -19,22 +20,16 @@ class FavoriteViewModel: ViewModelType {
     private lazy var input = PersistanceManager.Input()
     private lazy var output = PersistanceManager.shared.transform(input: input)
     
-    private let eventsFromServer: Observable<[SectionOfEvents]>
-    private let favoriteEvents: Observable<[EventCoreData]>
+    private let eventsFromServer: BehaviorRelay<[SectionOfEvents]> = BehaviorRelay(value: [])
+    private let favoriteEvents: BehaviorRelay<[EventCoreData]> = BehaviorRelay(value: [])
     
     let disposeBag = DisposeBag()
     
     init() {
-        let eventsFromServer: BehaviorSubject<[SectionOfEvents]> = BehaviorSubject(value: [])
-        let favoriteEvents: BehaviorSubject<[EventCoreData]> = BehaviorSubject(value: [])
-        
-        self.eventsFromServer = eventsFromServer.share()
-        self.favoriteEvents = favoriteEvents.share()
-        
         DevEventsFetcher()
             .devEvents
             .subscribe(onNext: { sectionOfEvents in
-                eventsFromServer.onNext(sectionOfEvents)
+                self.eventsFromServer.accept(sectionOfEvents)
             }, onError: { error in
                 // TODO: - 에러 핸들링
                 print("🍎 error:\(error.localizedDescription)")
@@ -46,7 +41,7 @@ class FavoriteViewModel: ViewModelType {
             .transform(input: PersistanceManager.Input())
             .favoriteCoreDataEvents
             .subscribe (onNext: { eventCoreData in
-                favoriteEvents.onNext(eventCoreData)
+                self.favoriteEvents.accept(eventCoreData)
             }, onError: { error in
                 // TODO: - 에러 핸들링
                 print("🍎 error:\(error.localizedDescription)")
@@ -56,6 +51,8 @@ class FavoriteViewModel: ViewModelType {
     
     
     func transform(input: Input) -> Output {
+        let relay: BehaviorRelay<[SectionOfEvents]> = BehaviorRelay(value: [])
+        
         let dataSources = Observable.combineLatest(eventsFromServer, favoriteEvents)
             .map { eventsFromServer, favoriteEvents -> [SectionOfEvents] in
                 var eventsFromServer = eventsFromServer
@@ -68,10 +65,16 @@ class FavoriteViewModel: ViewModelType {
                                                           items: items)
                 }
                 
-                return eventsFromServer
+                return eventsFromServer.filter({ !$0.items.isEmpty })
             }
         
-        return Output(dataSources: dataSources)
+        dataSources
+            .subscribe(onNext: { result in
+                relay.accept(result)
+            })
+            .disposed(by: disposeBag)
+        
+        return Output(dataSources: relay.asObservable())
     }
     
     func removeFavorite(event: Event) -> Single<Bool> {

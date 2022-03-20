@@ -14,6 +14,7 @@ PODS:
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
   - SwiftSoup (2.3.8)
+  - Toaster (2.3.0)
 
 DEPENDENCIES:
   - RxCocoa (= 6.5.0)
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - RxGesture
   - RxSwift (= 6.5.0)
   - SwiftSoup
+  - Toaster
 
 SPEC REPOS:
   trunk:
@@ -31,6 +33,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SwiftSoup
+    - Toaster
 
 SPEC CHECKSUMS:
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
@@ -40,7 +43,8 @@ SPEC CHECKSUMS:
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SwiftSoup: ba8ea2c91151881a298cba4b0628ef31e835a77f
+  Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
 
-PODFILE CHECKSUM: b8b5e7e843f2000b8248447db27b0e565d25e76f
+PODFILE CHECKSUM: 314187b02ce27f43237f18aa38a86219803e7fcf
 
 COCOAPODS: 1.11.3
