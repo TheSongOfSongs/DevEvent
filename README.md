@@ -29,7 +29,6 @@
 <br/>
 
 ## 👩‍💻 기술 스택
-- MVVM
 - RxSwift
 - CocoaPods
 
