@@ -1,5 +1,8 @@
 # 데브캘린더
 <br />
+
+[<img src = "https://devimages-cdn.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg">](https://apps.apple.com/kr/app/데브캘린더/id1614854936)  
+
 <p align="center">
   <a href="https://github.com/alexanderritik/Best-README-Template">
     <img src="https://user-images.githubusercontent.com/46002818/159280194-46412111-83d0-4fb2-8350-400ae9936c51.png" width="80" height="80">
@@ -15,6 +18,7 @@
 <img src = "https://user-images.githubusercontent.com/46002818/159281027-e135668a-f5e9-40d9-927d-214c4ebc0d04.png" width ="200">
 </p>
 
+<br/>
 <br/>
 
 ## 🛠 개발 환경
