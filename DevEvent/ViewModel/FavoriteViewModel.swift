@@ -20,8 +20,11 @@ class FavoriteViewModel: ViewModelType {
         var isNetworkConnect: Observable<Bool>
     }
     
-    private lazy var input = PersistanceManager.Input()
-    private lazy var output = PersistanceManager.shared.transform(input: input)
+    private lazy var devEventsFetcherInput = DevEventsFetcher.Input()
+    private lazy var devEventsFetcherOutput = DevEventsFetcher.shared.transform(input: devEventsFetcherInput)
+    
+    private lazy var persistanceManagerInput = PersistanceManager.Input()
+    private lazy var persistanceManagerOutput = PersistanceManager.shared.transform(input: persistanceManagerInput)
     
     private let eventsFromServer: BehaviorRelay<[SectionOfEvents]> = BehaviorRelay(value: [])
     private let favoriteEvents: BehaviorRelay<[EventCoreData]> = BehaviorRelay(value: [])
@@ -33,7 +36,7 @@ class FavoriteViewModel: ViewModelType {
     }
     
     private func fetchFavoriteEvents() {
-        DevEventsFetcher()
+        devEventsFetcherOutput
             .devEvents
             .subscribe(onNext: { sectionOfEvents in
                 self.eventsFromServer.accept(sectionOfEvents)

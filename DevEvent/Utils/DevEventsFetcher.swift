@@ -9,30 +9,52 @@ import Foundation
 import RxSwift
 import RxRelay
 
-struct DevEventsFetcher {
+final class DevEventsFetcher {
+    
+    struct Input {
+        var requestFetchingEvents: Observable<Void>?
+    }
+    
+    struct Output {
+        var devEvents: Observable<[SectionOfEvents]>
+    }
+    
+    static let shared: DevEventsFetcher = DevEventsFetcher()
+    
     let networkService: NetworkService
     let parser: Parser
     let disposeBag = DisposeBag()
     
-    var devEvents = BehaviorRelay<[SectionOfEvents]>(value: [])
+    private var devEvents = BehaviorRelay<[SectionOfEvents]>(value: [])
     
-    init() {
+    private init() {
         self.networkService = NetworkService.shared
         self.parser = Parser()
         
         fetchDevEvents()
     }
     
-    func fetchDevEvents() {
+    private func fetchDevEvents() {
         networkService.fetchHTML()
-            .flatMap({ parser.parse(html: $0) })
+            .flatMap({ self.parser.parse(html: $0) })
             .subscribe(
-                onSuccess: { events in
-                    devEvents.accept(events)
+                onSuccess: { [weak self] events in
+                    self?.devEvents.accept(events)
                 },
                 onFailure: { error in
                     
                 })
             .disposed(by: disposeBag)
+    }
+    
+    func transform(input: Input) -> Output {
+        input.requestFetchingEvents?
+            .subscribe(onNext: { [weak self] _ in
+                self?.fetchDevEvents()
+            })
+            .disposed(by: disposeBag)
+        
+        let devEvents = devEvents.share()
+        return Output(devEvents: devEvents)
     }
 }
