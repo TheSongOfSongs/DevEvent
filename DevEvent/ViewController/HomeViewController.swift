@@ -179,6 +179,11 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
     }
     
     @objc func reloadEventsData() {
+        guard isNetworkConnect else {
+            refreshControl.endRefreshing()
+            return
+        }
+        
         requestFetchingEvents
             .onNext(())
     }
