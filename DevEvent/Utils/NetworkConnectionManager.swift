@@ -28,8 +28,8 @@ final class NetworkConnectionManager {
     private init () {
         connectionMonitor = NWPathMonitor()
         isConnectedNetwork = isConnectedNetworkRelay
-            .share()
             .asObservable()
+            .skip(while: { $0 })
     }
     
     // MARK: - Implements
@@ -39,7 +39,6 @@ final class NetworkConnectionManager {
             let isConnected = path.status == .satisfied
             guard let self = self,
                   isConnected != self.isConnectedNetworkRelay.value else { return }
-
             self.isConnectedNetworkRelay.accept(isConnected)
         }
     }
