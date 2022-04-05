@@ -31,7 +31,10 @@ class WebKitViewController: UIViewController, StoryboardInstantiable {
         
         let origin = CGPoint(x: 0, y: closeButton.frame.maxY)
         let frame = CGSize(width: view.frame.width,
-                           height: view.frame.height - closeButton.frame.maxY)
+                           height: view.frame.height
+                           - closeButton.frame.maxY
+                           - (tabBarController?.tabBar.frame.height ?? 0)
+        )
         subView.frame = view.bounds
         webView?.frame = CGRect(origin: origin,
                                 size: frame)
