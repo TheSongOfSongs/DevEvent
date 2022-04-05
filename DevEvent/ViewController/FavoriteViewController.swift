@@ -62,7 +62,10 @@ class FavoriteViewController: UIViewController, StoryboardInstantiable {
     func setupTableView() {
         let cell = UINib(nibName: DevEventTableViewCell.identifier, bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: DevEventTableViewCell.identifier)
-        tableView.delegate = self
+        
+        // cell size
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
     }
     
     func bindViewModel() {
@@ -119,6 +122,7 @@ class FavoriteViewController: UIViewController, StoryboardInstantiable {
     
     func setupCell(_ cell: DevEventTableViewCell, event: Event) {
         cell.updateWith(event: event, setFavoriteImageViewHidden: true)
+        cell.updateUIForFavorite()
         
         let gestureDisposable = cell.rx
             .longPressGesture()

@@ -15,6 +15,7 @@ class DevEventTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var favoriteImageView: UIImageView!
     @IBOutlet weak var roundedBackgroundView: UIView!
+    @IBOutlet weak var titleTrailingConstraint: NSLayoutConstraint!
     
     var shadowLayer: CAShapeLayer?
     var gestureDisposable = SingleAssignmentDisposable()
@@ -58,5 +59,9 @@ class DevEventTableViewCell: UITableViewCell {
         } else {
             favoriteImageView.isHidden = !event.isFavorite
         }
+    }
+    
+    func updateUIForFavorite() {
+        titleTrailingConstraint.constant = 20
     }
 }

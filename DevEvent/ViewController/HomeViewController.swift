@@ -75,14 +75,12 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
         // refrehsControl
         refreshControl.addTarget(self, action: #selector(reloadEventsData), for: .valueChanged)
         tableView.refreshControl = refreshControl
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
     }
     
     func bindViewModel() {
-        tableView
-            .rx
-            .setDelegate(self)
-            .disposed(by: disposeBag)
-        
         let dataSources = output.dataSources
             .share(replay: 1, scope: .whileConnected)
         

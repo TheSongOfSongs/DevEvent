@@ -16,7 +16,6 @@
 		763346AC27E22FBB00F8BB04 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763346AB27E22FBB00F8BB04 /* FavoriteViewController.swift */; };
 		763346AE27E2313E00F8BB04 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763346AD27E2313E00F8BB04 /* FavoriteViewModel.swift */; };
 		763346B027E2338E00F8BB04 /* FavoriteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763346AF27E2338E00F8BB04 /* FavoriteCoordinator.swift */; };
-		763346B227E2362E00F8BB04 /* FavoriteViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763346B127E2362E00F8BB04 /* FavoriteViewController+UITableViewDelegate.swift */; };
 		763346B427E23D4400F8BB04 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763346B327E23D4400F8BB04 /* InfoViewController.swift */; };
 		763346B627E23ECA00F8BB04 /* InfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763346B527E23ECA00F8BB04 /* InfoCoordinator.swift */; };
 		763346B927E240B200F8BB04 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763346B727E240B200F8BB04 /* InfoTableViewCell.swift */; };
@@ -49,7 +48,6 @@
 		76FB9D4827D4C83E001EC0F5 /* DevEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D4627D4C83E001EC0F5 /* DevEventTableViewCell.swift */; };
 		76FB9D4927D4C83E001EC0F5 /* DevEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76FB9D4727D4C83E001EC0F5 /* DevEventTableViewCell.xib */; };
 		76FB9D4B27D4CCBC001EC0F5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D4A27D4CCBC001EC0F5 /* UIView+Extension.swift */; };
-		76FB9D4D27D5C761001EC0F5 /* HomeViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D4C27D5C761001EC0F5 /* HomeViewController+UITableViewDelegate.swift */; };
 		76FB9D5127D5CEF0001EC0F5 /* WebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D5027D5CEF0001EC0F5 /* WebKitViewController.swift */; };
 		76FB9D5327D5D5F1001EC0F5 /* WebKitCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB9D5227D5D5F1001EC0F5 /* WebKitCoordinator.swift */; };
 		76FB9D5527D5E9A9001EC0F5 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76FB9D5427D5E9A9001EC0F5 /* WebKit.framework */; };
@@ -87,7 +85,6 @@
 		763346AB27E22FBB00F8BB04 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		763346AD27E2313E00F8BB04 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		763346AF27E2338E00F8BB04 /* FavoriteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCoordinator.swift; sourceTree = "<group>"; };
-		763346B127E2362E00F8BB04 /* FavoriteViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		763346B327E23D4400F8BB04 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		763346B527E23ECA00F8BB04 /* InfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCoordinator.swift; sourceTree = "<group>"; };
 		763346B727E240B200F8BB04 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -124,7 +121,6 @@
 		76FB9D4627D4C83E001EC0F5 /* DevEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevEventTableViewCell.swift; sourceTree = "<group>"; };
 		76FB9D4727D4C83E001EC0F5 /* DevEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DevEventTableViewCell.xib; sourceTree = "<group>"; };
 		76FB9D4A27D4CCBC001EC0F5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		76FB9D4C27D5C761001EC0F5 /* HomeViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		76FB9D5027D5CEF0001EC0F5 /* WebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitViewController.swift; sourceTree = "<group>"; };
 		76FB9D5227D5D5F1001EC0F5 /* WebKitCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitCoordinator.swift; sourceTree = "<group>"; };
 		76FB9D5427D5E9A9001EC0F5 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -259,9 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				76FB9D1D27D38978001EC0F5 /* HomeViewController.swift */,
-				76FB9D4C27D5C761001EC0F5 /* HomeViewController+UITableViewDelegate.swift */,
 				763346AB27E22FBB00F8BB04 /* FavoriteViewController.swift */,
-				763346B127E2362E00F8BB04 /* FavoriteViewController+UITableViewDelegate.swift */,
 				763346B327E23D4400F8BB04 /* InfoViewController.swift */,
 				76FB9D5027D5CEF0001EC0F5 /* WebKitViewController.swift */,
 			);
@@ -609,7 +603,6 @@
 				761FBA6327E0BC780066F078 /* EventCoreData+CoreDataProperties.swift in Sources */,
 				761FBA6127E0ADCA0066F078 /* Entity.swift in Sources */,
 				76FB9D4227D4C5A0001EC0F5 /* HomeViewModel.swift in Sources */,
-				76FB9D4D27D5C761001EC0F5 /* HomeViewController+UITableViewDelegate.swift in Sources */,
 				76FB9D2D27D3972B001EC0F5 /* ViewModelType.swift in Sources */,
 				76FB9D5327D5D5F1001EC0F5 /* WebKitCoordinator.swift in Sources */,
 				76FB9D5127D5CEF0001EC0F5 /* WebKitViewController.swift in Sources */,
@@ -620,7 +613,6 @@
 				763346B627E23ECA00F8BB04 /* InfoCoordinator.swift in Sources */,
 				763346AC27E22FBB00F8BB04 /* FavoriteViewController.swift in Sources */,
 				76FB9D1A27D3758A001EC0F5 /* Coordinator.swift in Sources */,
-				763346B227E2362E00F8BB04 /* FavoriteViewController+UITableViewDelegate.swift in Sources */,
 				76FB9D1C27D377F0001EC0F5 /* TabBarCoordinator.swift in Sources */,
 				76FB9D4027D4C17D001EC0F5 /* Parser.swift in Sources */,
 				763346BC27E357D100F8BB04 /* NetworkConnectionManager.swift in Sources */,
