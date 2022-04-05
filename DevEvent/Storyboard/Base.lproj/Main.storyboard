@@ -87,15 +87,21 @@
                                     <action selector="close:" destination="hAB-iV-Mw1" eventType="touchUpInside" id="yjd-aE-T07"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="7Ny-YW-agx">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kax-2M-nNr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ydm-Id-tca" firstAttribute="top" secondItem="kax-2M-nNr" secondAttribute="top" id="4G5-dY-Zb5"/>
+                            <constraint firstItem="7Ny-YW-agx" firstAttribute="centerY" secondItem="kax-2M-nNr" secondAttribute="centerY" id="GqI-Ca-IWu"/>
+                            <constraint firstItem="7Ny-YW-agx" firstAttribute="centerX" secondItem="kax-2M-nNr" secondAttribute="centerX" id="xLa-gU-k7N"/>
                             <constraint firstItem="Ydm-Id-tca" firstAttribute="leading" secondItem="kax-2M-nNr" secondAttribute="leading" id="xr5-mc-6up"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="7Ny-YW-agx" id="VxG-Zy-aM3"/>
                         <outlet property="closeButton" destination="Ydm-Id-tca" id="JOp-bX-aFv"/>
                     </connections>
                 </viewController>

@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxRelay
 
-class HomeViewModel: ViewModelType {
+final class HomeViewModel: ViewModelType {
     
     struct Input {
         var requestFetchingEvents: Observable<Void>
@@ -22,6 +22,10 @@ class HomeViewModel: ViewModelType {
     
     private lazy var input = PersistanceManager.Input()
     private lazy var output = PersistanceManager.shared.transform(input: input)
+    
+    private lazy var requestFetchingEvents: PublishSubject<Void> = PublishSubject()
+    private lazy var devEventsFetcherInput = DevEventsFetcher.Input(requestFetchingEvents: requestFetchingEvents)
+    private lazy var devEventsFetcherOutput = DevEventsFetcher.shared.transform(input: devEventsFetcherInput)
     
     private let eventsFromServer: BehaviorRelay<[SectionOfEvents]> = BehaviorRelay(value: [])
     private let favoriteEvents: BehaviorRelay<[EventCoreData]> = BehaviorRelay(value: [])
@@ -37,7 +41,8 @@ class HomeViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         input.requestFetchingEvents
             .subscribe(onNext: { _ in
-                self.fetchAllEvents()
+                self.requestFetchingEvents
+                    .onNext(())
             })
             .disposed(by: disposeBag)
         
@@ -63,7 +68,7 @@ class HomeViewModel: ViewModelType {
     }
     
     func fetchAllEvents() {
-        DevEventsFetcher()
+        devEventsFetcherOutput
             .devEvents
             .subscribe(onNext: { sectionOfEvents in
                 self.eventsFromServer.accept(sectionOfEvents)

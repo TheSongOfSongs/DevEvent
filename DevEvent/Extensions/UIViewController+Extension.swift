@@ -14,10 +14,12 @@ extension UIViewController {
     }
     
     func showToast(_ type: ToasterMessage) {
-        ToastCenter.default.cancelAll()
-        
-        let toast = Toast(text: type.message, duration: 3)
-        toast.view.bottomOffsetPortrait = 100
-        toast.show()
+        DispatchQueue.main.async {
+            ToastCenter.default.cancelAll()
+            
+            let toast = Toast(text: type.message, duration: 3)
+            toast.view.bottomOffsetPortrait = 100
+            toast.show()
+        }
     }
 }
