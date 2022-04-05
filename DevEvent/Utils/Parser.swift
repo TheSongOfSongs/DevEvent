@@ -90,7 +90,9 @@ struct Parser {
                 default: // 이벤트 기간
                     eventPeriodName = detail.first
                     
-                    if detail.count > 2 {
+                    if detail.count > 3 {
+                        duration = "\(detail[1]):\(detail[2]):\(detail[3])"
+                    } else if detail.count > 2 {
                         duration = "\(detail[1]):\(detail[2])"
                     } else {
                         duration = detail.last ?? "-"
