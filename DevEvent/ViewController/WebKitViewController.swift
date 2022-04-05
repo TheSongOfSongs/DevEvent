@@ -12,6 +12,7 @@ import WebKit
 class WebKitViewController: UIViewController, StoryboardInstantiable {
     
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     static var defaultFileName: String = "Main"
     
@@ -61,5 +62,10 @@ extension WebKitViewController: WKUIDelegate, WKNavigationDelegate   {
     /// WKNavigationDelegate 중복적으로 리로드되는 것 방지
     func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
         webView.reload()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activityIndicatorView.isHidden = true
+        activityIndicatorView.stopAnimating()
     }
 }
