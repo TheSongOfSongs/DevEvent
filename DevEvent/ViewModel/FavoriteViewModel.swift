@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxRelay
 
-class FavoriteViewModel: ViewModelType {
+final class FavoriteViewModel: ViewModelType {
     
     struct Input {
         var requestFetchingEvents: Observable<Void>
@@ -22,9 +22,6 @@ class FavoriteViewModel: ViewModelType {
     
     private lazy var devEventsFetcherInput = DevEventsFetcher.Input()
     private lazy var devEventsFetcherOutput = DevEventsFetcher.shared.transform(input: devEventsFetcherInput)
-    
-    private lazy var persistanceManagerInput = PersistanceManager.Input()
-    private lazy var persistanceManagerOutput = PersistanceManager.shared.transform(input: persistanceManagerInput)
     
     private let eventsFromServer: BehaviorRelay<[SectionOfEvents]> = BehaviorRelay(value: [])
     private let favoriteEvents: BehaviorRelay<[EventCoreData]> = BehaviorRelay(value: [])

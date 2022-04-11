@@ -20,9 +20,6 @@ final class HomeViewModel: ViewModelType {
         var isNetworkConnect: Observable<Bool>
     }
     
-    private lazy var input = PersistanceManager.Input()
-    private lazy var output = PersistanceManager.shared.transform(input: input)
-    
     private lazy var requestFetchingEvents: PublishSubject<Void> = PublishSubject()
     private lazy var devEventsFetcherInput = DevEventsFetcher.Input(requestFetchingEvents: requestFetchingEvents)
     private lazy var devEventsFetcherOutput = DevEventsFetcher.shared.transform(input: devEventsFetcherInput)
@@ -67,7 +64,7 @@ final class HomeViewModel: ViewModelType {
                       isNetworkConnect: NetworkConnectionManager.shared.isConnectedNetwork)
     }
     
-    func fetchAllEvents() {
+    private func fetchAllEvents() {
         devEventsFetcherOutput
             .devEvents
             .subscribe(onNext: { sectionOfEvents in

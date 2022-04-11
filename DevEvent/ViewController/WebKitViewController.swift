@@ -9,7 +9,7 @@ import UIKit
 import WebKit
 
 
-class WebKitViewController: UIViewController, StoryboardInstantiable {
+final class WebKitViewController: UIViewController, StoryboardInstantiable {
     
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!

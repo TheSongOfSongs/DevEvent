@@ -13,6 +13,7 @@
 		761FBA6127E0ADCA0066F078 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FBA6027E0ADCA0066F078 /* Entity.swift */; };
 		761FBA6327E0BC780066F078 /* EventCoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FBA6227E0BC780066F078 /* EventCoreData+CoreDataProperties.swift */; };
 		761FBA6527E0C2D30066F078 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FBA6427E0C2D30066F078 /* UIDevice+Extension.swift */; };
+		762DC16127FFFCFF0016DE46 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762DC16027FFFCFF0016DE46 /* UITableView+Extension.swift */; };
 		763346AC27E22FBB00F8BB04 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763346AB27E22FBB00F8BB04 /* FavoriteViewController.swift */; };
 		763346AE27E2313E00F8BB04 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763346AD27E2313E00F8BB04 /* FavoriteViewModel.swift */; };
 		763346B027E2338E00F8BB04 /* FavoriteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763346AF27E2338E00F8BB04 /* FavoriteCoordinator.swift */; };
@@ -82,6 +83,7 @@
 		761FBA6027E0ADCA0066F078 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		761FBA6227E0BC780066F078 /* EventCoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventCoreData+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		761FBA6427E0C2D30066F078 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		762DC16027FFFCFF0016DE46 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		763346AB27E22FBB00F8BB04 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		763346AD27E2313E00F8BB04 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		763346AF27E2338E00F8BB04 /* FavoriteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCoordinator.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				76FB9D3A27D4A3B1001EC0F5 /* String+Extension.swift */,
 				761FBA6427E0C2D30066F078 /* UIDevice+Extension.swift */,
 				76FB9D2627D38B67001EC0F5 /* UIStoryboard+Extension.swift */,
+				762DC16027FFFCFF0016DE46 /* UITableView+Extension.swift */,
 				76FB9D4A27D4CCBC001EC0F5 /* UIView+Extension.swift */,
 				76FB9D2427D38AC6001EC0F5 /* UIViewController+Extension.swift */,
 			);
@@ -601,6 +604,7 @@
 			files = (
 				76FB9D4827D4C83E001EC0F5 /* DevEventTableViewCell.swift in Sources */,
 				761FBA6327E0BC780066F078 /* EventCoreData+CoreDataProperties.swift in Sources */,
+				762DC16127FFFCFF0016DE46 /* UITableView+Extension.swift in Sources */,
 				761FBA6127E0ADCA0066F078 /* Entity.swift in Sources */,
 				76FB9D4227D4C5A0001EC0F5 /* HomeViewModel.swift in Sources */,
 				76FB9D2D27D3972B001EC0F5 /* ViewModelType.swift in Sources */,

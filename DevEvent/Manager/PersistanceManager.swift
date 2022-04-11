@@ -36,9 +36,7 @@ final class PersistanceManager {
 
     // MARK: -
     func transform(input: Input) -> Output {
-        let favoriteCoreDataEvents = self.favoriteCoreDataEvents
-            .share()
-            .asObservable()
+        let favoriteCoreDataEvents = favoriteCoreDataEvents.share()
         return Output(favoriteCoreDataEvents: favoriteCoreDataEvents)
     }
     
@@ -46,7 +44,7 @@ final class PersistanceManager {
     func fetchEvents() {
         do {
             let events = try context.fetch(EventCoreData.fetchRequest())
-            self.favoriteCoreDataEvents.onNext(events)
+            favoriteCoreDataEvents.onNext(events)
         } catch let error {
             print(error.localizedDescription)
         }

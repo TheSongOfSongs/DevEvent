@@ -12,30 +12,22 @@ import RxSwift
 import RxRelay
 import Toaster
 
-class HomeViewController: UIViewController, StoryboardInstantiable {
+final class HomeViewController: UIViewController, StoryboardInstantiable {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var networkConnectionLabel: UILabel!
-    
-    static var defaultFileName: String = "Main"
-    
-    var disposeBag: DisposeBag = DisposeBag()
-    
-    
-    // MARK: ViewModel
-    let viewModel = HomeViewModel()
-    private lazy var requestFetchingEvents: PublishSubject<Void> = PublishSubject()
-    private lazy var input = HomeViewModel.Input(requestFetchingEvents:
-                                                    requestFetchingEvents.asObservable())
-    private lazy var output = viewModel.transform(input: input)
-    
-    var coordinator: HomeCoordinator!
-    
     private var refreshControl = UIRefreshControl()
     
+    static var defaultFileName: String = "Main"
     private var isNetworkConnect: Bool = true
     
+    var coordinator: HomeCoordinator!
+    var disposeBag: DisposeBag = DisposeBag()
+    
+    // MARK: - ViewModel
+    let viewModel = HomeViewModel()
+    var requestFetchingEvents: PublishSubject<Void> = PublishSubject()
     var dataSources: RxTableViewSectionedReloadDataSource<SectionOfEvents> {
         let dataSource = RxTableViewSectionedReloadDataSource<SectionOfEvents>(configureCell: { [weak self] _, tableView, indexPath, devEvent in
             guard let cell = tableView
@@ -81,8 +73,12 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
     }
     
     func bindViewModel() {
-        let dataSources = output.dataSources
-            .share(replay: 1, scope: .whileConnected)
+        let input = HomeViewModel.Input(requestFetchingEvents: requestFetchingEvents.asObservable())
+        let output = viewModel.transform(input: input)
+        let dataSources = output
+            .dataSources
+            .share(replay: 1,
+                   scope: .whileConnected)
         
         dataSources
             .observe(on: MainScheduler.instance)
@@ -117,8 +113,7 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
                     return
                 }
                 
-                // TODO: 더 나은 조건식 찾기 (dataSources 바로 가져올 수 있도록)
-                if self.tableView.visibleCells.isEmpty {
+                if self.tableView.isEmpty {
                     // 데이터를 로드한 적이 없는 경우
                     self.networkConnectionLabel.isHidden = false
                     self.activityIndicatorView.isHidden = true
@@ -144,30 +139,26 @@ class HomeViewController: UIViewController, StoryboardInstantiable {
     func setupCell(_ cell: DevEventTableViewCell, event: Event) {
         cell.updateWith(event: event)
         
-        // TODO: flatMap에 조건식 넣기
         let gestureDisposable: Disposable = {
-            if event.isFavorite {
-                return cell
-                    .rx
-                    .longPressGesture()
-                    .when(.began)
-                    .flatMap({ _ in self.viewModel.removeFavorite(event: event) })
-                    .subscribe(onNext: { _ in
-                        UIDevice.vibrate()
-                        cell.favoriteImageView.isHidden = !cell.favoriteImageView.isHidden
-                    })
-            } else {
-                return cell
-                    .rx
-                    .longPressGesture()
-                    .when(.began)
-                    .flatMap({ _ in self.viewModel.addFavorite(event: event) })
-                    .subscribe(onNext: { _ in
-                        UIDevice.vibrate()
-                        cell.favoriteImageView.isHidden = !cell.favoriteImageView.isHidden
-                    })
+            var handlingFavorite: Single<Bool> {
+                if event.isFavorite {
+                    return viewModel.removeFavorite(event: event)
+                } else {
+                    return viewModel.addFavorite(event: event)
+                }
             }
+            
+            return cell
+                .rx
+                .longPressGesture()
+                .when(.began)
+                .flatMap({ _  in handlingFavorite })
+                .subscribe(onNext: { _ in
+                    UIDevice.vibrate()
+                    cell.favoriteImageView.isHidden.toggle()
+                })
         }()
+        
         
         cell.gestureDisposable.setDisposable(gestureDisposable)
     }

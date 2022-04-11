@@ -9,7 +9,7 @@ import UIKit
 import RxDataSources
 import RxSwift
 
-class FavoriteViewController: UIViewController, StoryboardInstantiable {
+final class FavoriteViewController: UIViewController, StoryboardInstantiable {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var favoriteGuideLabel: UILabel!
@@ -20,10 +20,7 @@ class FavoriteViewController: UIViewController, StoryboardInstantiable {
     var disposeBag: DisposeBag = DisposeBag()
     
     let viewModel = FavoriteViewModel()
-    private lazy var requestFetchingEvents: PublishSubject<Void> = PublishSubject()
-    private lazy var input = FavoriteViewModel.Input(requestFetchingEvents:
-                                                        requestFetchingEvents.asObservable())
-    private lazy var output = viewModel.transform(input: input)
+    private var requestFetchingEvents: PublishSubject<Void> = PublishSubject()
     
     private var isNetworkConnect: Bool = true
     
@@ -69,6 +66,10 @@ class FavoriteViewController: UIViewController, StoryboardInstantiable {
     }
     
     func bindViewModel() {
+        let input = FavoriteViewModel.Input(requestFetchingEvents:
+                                                requestFetchingEvents.asObservable())
+        let output = viewModel.transform(input: input)
+        
         let dataSources = output
             .dataSources
             .share(replay: 1)

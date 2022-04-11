@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InfoViewController: UIViewController, StoryboardInstantiable {
+final class InfoViewController: UIViewController, StoryboardInstantiable {
     
     struct CellTexts {
         let title: String
