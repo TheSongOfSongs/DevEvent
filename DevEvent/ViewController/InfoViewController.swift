@@ -21,25 +21,21 @@ final class InfoViewController: UIViewController, StoryboardInstantiable {
     var coordinator: InfoCoordinator!
     var cellTexts: [CellTexts] = []
     
-    var appStoreVersion: String? {
-        let bundleId = "brave.jin.devEvent"
-        guard let url = URL(string: "http://itunes.apple.com/lookup?bundleId=\(bundleId)"),
-              let data = try? Data(contentsOf: url),
-              let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
-              let results = json["results"] as? [[String: Any]],
-              results.count > 0,
-              let appStoreVersion = results[0]["version"] as? String
-        else { return nil }
+    var appVersion: String? {
+        guard let info = Bundle.main.infoDictionary,
+              let currentVersion = info["CFBundleShortVersionString"] as? String else {
+            return nil
+        }
         
-        return appStoreVersion
+        return currentVersion
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // tableView cell의 label에 들어갈 문구
         cellTexts = [
-            CellTexts(title: "앱 버전", description: appStoreVersion ?? ""),
+            CellTexts(title: "앱 버전", description: appVersion ?? ""),
             CellTexts(title: "문의 사항", description: "jinhyang.programmer@gmail.com로 메일 부탁드립니다"),
             CellTexts(title: "GitHub", description: "용감하게 도전하는 친구들 _ Why not change the world? 🌐")
         ]
