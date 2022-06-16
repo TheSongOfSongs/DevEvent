@@ -19,7 +19,7 @@ extension EventCoreData {
     @NSManaged public var name: String?
     @NSManaged public var url: URL?
     @NSManaged public var registeredDate: Date?
-
+    @NSManaged public var detail: EventDetail?
 }
 
 extension EventCoreData : Identifiable {

@@ -60,6 +60,10 @@ final class PersistanceManager {
             object.setValue(event.name, forKey: EventCoreDataKey.name.rawValue)
             object.setValue(event.url, forKey: EventCoreDataKey.url.rawValue)
             object.setValue(Date(), forKey: EventCoreDataKey.registeredDate.rawValue)
+            
+            if let detail = event.detail {
+                object.setValue(detail, forKey: EventCoreDataKey.detail.rawValue)
+            }
         }
         
         return Single<Bool>.create { [weak self] single in

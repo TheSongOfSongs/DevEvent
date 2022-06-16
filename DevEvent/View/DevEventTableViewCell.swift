@@ -37,6 +37,8 @@ class DevEventTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
+        hostLabel.text = ""
+        dateLabel.text = ""
         favoriteImageView.isHidden = true
         gestureDisposable.dispose()
         gestureDisposable = SingleAssignmentDisposable()
@@ -50,7 +52,7 @@ class DevEventTableViewCell: UITableViewCell {
         titleLabel.text = event.name
         
         if let detail = event.detail {
-            hostLabel.text = event.detail?.host
+            hostLabel.text = detail.host
             dateLabel.text = "\(detail.eventPeriodName ?? ""): \(detail.duration ?? "")"
         }
         

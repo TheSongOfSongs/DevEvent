@@ -23,4 +23,5 @@ enum EventCoreDataKey: String {
     case name
     case url
     case registeredDate
+    case detail
 }

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="EventCoreData" representedClassName="EventCoreData" syncable="YES">
+        <attribute name="detail" optional="YES" attributeType="Transformable" customClassName="EventDetail"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="registeredDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="url" optional="YES" attributeType="URI"/>
     </entity>
     <elements>
-        <element name="EventCoreData" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="EventCoreData" positionX="-63" positionY="-18" width="128" height="89"/>
     </elements>
 </model>

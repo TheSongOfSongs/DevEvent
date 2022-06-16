@@ -23,9 +23,50 @@ struct Event: Identifiable {
     }
 }
 
-struct EventDetail {
+extension Event {
+    init(eventCoreData: EventCoreData) {
+        self.name = eventCoreData.name ?? ""
+        self.urlString = eventCoreData.url?.absoluteString ?? ""
+        self.detail = eventCoreData.detail
+        self.isFavorite = true
+    }
+}
+
+public class EventDetail: NSObject, NSCoding {
     var category: String?
     var host: String?
     var eventPeriodName: String?
     var duration: String?
+    
+    public func encode(with coder: NSCoder) {
+        coder.encode(category, forKey: "category")
+        coder.encode(host, forKey: "host")
+        coder.encode(host, forKey: "eventPeriodName")
+        coder.encode(host, forKey: "duration")
+    }
+    
+    public required init?(coder: NSCoder) {
+        if let category = coder.decodeObject(of: NSString.self, forKey: "category") {
+            self.category = category as String
+        }
+        
+        if let host = coder.decodeObject(of: NSString.self, forKey: "host") {
+            self.host = host as String
+        }
+        
+        if let eventPeriodName = eventPeriodName {
+            self.eventPeriodName = eventPeriodName as String
+        }
+        
+        if let duration = duration {
+            self.duration = duration as String
+        }
+    }
+    
+    init(category: String?, host: String?, eventPeriodName: String?, duration: String?) {
+        self.category = category
+        self.host = host
+        self.eventPeriodName = eventPeriodName
+        self.duration = duration
+    }
 }
