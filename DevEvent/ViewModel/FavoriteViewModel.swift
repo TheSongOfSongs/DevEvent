@@ -69,6 +69,7 @@ final class FavoriteViewModel: ViewModelType {
         
         let dataSources = Observable.combineLatest(eventsFromServer, favoriteEvents)
             .map { eventsFromServer, favoriteEvents -> [SectionOfEvents] in
+                // Github에 올라와있는 이벤트 리스트만 필터링
                 var eventsFromServer = eventsFromServer
                 for (i, sectionOfEvents) in eventsFromServer.enumerated() {
                     let items = sectionOfEvents.items.filter { event in
@@ -78,6 +79,18 @@ final class FavoriteViewModel: ViewModelType {
                     eventsFromServer[i] = SectionOfEvents(header: sectionOfEvents.header,
                                                           items: items)
                 }
+                
+                // 종료된 이벤트 Section 추가
+                let events = eventsFromServer.flatMap({ $0.items })
+                var endedEvents: [Event] = []
+                favoriteEvents.forEach { event in
+                    if events.first(where: { $0.isEqual(to: event) }) == nil {
+                        endedEvents.append(Event(eventCoreData: event))
+                    }
+                }
+                
+                eventsFromServer.append(SectionOfEvents(header: "종료된 이벤트",
+                                                        items: endedEvents))
                 
                 return eventsFromServer.filter({ !$0.items.isEmpty })
             }
