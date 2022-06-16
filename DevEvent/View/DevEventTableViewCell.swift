@@ -20,6 +20,14 @@ class DevEventTableViewCell: UITableViewCell {
     var shadowLayer: CAShapeLayer?
     var gestureDisposable = SingleAssignmentDisposable()
     
+    private var shadowColor: UIColor = {
+        if UITraitCollection.current.userInterfaceStyle == .dark {
+            return .white
+        } else {
+            return .black.withAlphaComponent(0.5)
+        }
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         roundedBackgroundView.makeCornerRounded(radius: 15)
@@ -31,7 +39,7 @@ class DevEventTableViewCell: UITableViewCell {
         
         roundedBackgroundView.layer.cornerRadius = 20
         roundedBackgroundView.layer.shadowOpacity = 0.25
-        roundedBackgroundView.layer.shadowColor = UIColor.black.withAlphaComponent(0.5).cgColor
+        roundedBackgroundView.layer.shadowColor = shadowColor.cgColor
         roundedBackgroundView.layer.shadowRadius = 50
         roundedBackgroundView.layer.masksToBounds = false
     }
