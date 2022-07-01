@@ -20,13 +20,13 @@ class DevEventTableViewCell: UITableViewCell {
     var shadowLayer: CAShapeLayer?
     var gestureDisposable = SingleAssignmentDisposable()
     
-    private var shadowColor: UIColor = {
+    private var shadowColor: UIColor {
         if UITraitCollection.current.userInterfaceStyle == .dark {
             return .white
         } else {
             return .black.withAlphaComponent(0.5)
         }
-    }()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
