@@ -43,11 +43,19 @@ final class NetworkService {
                 return Disposables.create()
             }
             
-            do {
-                let html = try String(contentsOf: url, encoding: .utf8)
-                single(.success(html))
-            } catch let error {
-                single(.failure(error))
+            DispatchQueue.global().async {
+                do {
+                    let html = try String(contentsOf: url, encoding: .utf8)
+                    
+                    DispatchQueue.main.async {
+                        single(.success(html))
+                    }
+                    
+                } catch let error {
+                    DispatchQueue.main.async {
+                        single(.failure(error))
+                    }
+                }
             }
             
             return Disposables.create()
