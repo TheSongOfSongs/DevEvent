@@ -24,6 +24,10 @@ final class NetworkConnectionManager {
     let isConnectedNetwork: Observable<Bool>
     private let isConnectedNetworkRelay: BehaviorRelay<Bool> = BehaviorRelay(value: true)
     
+    var isReachable: Bool {
+        isConnectedNetworkRelay.value
+    }
+    
     // MARK: - init
     private init () {
         connectionMonitor = NWPathMonitor()

@@ -26,9 +26,9 @@ final class NetworkService {
     
     static let shared = NetworkService()
     
-    private let githubURLString = "https://github.com/brave-people/Dev-Event/blob/master/README.md"
     
     private init() { }
+    let githubURLString = "https://github.com/brave-people/Dev-Event/blob/master/README.md"
     
     /// 스크래핑을 통해 가져온 HTML을 MonthlyEvent 타입으로 가공하는 함수
     func fetchHTML() -> Single<String> {
