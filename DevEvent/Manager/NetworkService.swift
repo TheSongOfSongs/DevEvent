@@ -27,7 +27,7 @@ final class NetworkService {
     
     static let shared = NetworkService()
     
-    let session: URLSessionProtocol
+    var session: URLSessionProtocol
     
     let githubURLString = "https://github.com/brave-people/Dev-Event/blob/master/README.md"
     
