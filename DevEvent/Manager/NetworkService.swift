@@ -13,6 +13,7 @@ import SwiftSoup
 enum FetchingEventsError: Error {
     case urlError
     case parsingError
+    case dataError
     case unknown
     case other(Error)
     
@@ -26,9 +27,13 @@ final class NetworkService {
     
     static let shared = NetworkService()
     
-    private let githubURLString = "https://github.com/brave-people/Dev-Event/blob/master/README.md"
+    var session: URLSessionProtocol
     
-    private init() { }
+    let githubURLString = "https://github.com/brave-people/Dev-Event/blob/master/README.md"
+    
+    private init(session: URLSessionProtocol = URLSession.shared) {
+        self.session = session
+    }
     
     /// 스크래핑을 통해 가져온 HTML을 MonthlyEvent 타입으로 가공하는 함수
     func fetchHTML() -> Single<String> {
@@ -43,20 +48,20 @@ final class NetworkService {
                 return Disposables.create()
             }
             
-            DispatchQueue.global().async {
-                do {
-                    let html = try String(contentsOf: url, encoding: .utf8)
-                    
-                    DispatchQueue.main.async {
-                        single(.success(html))
-                    }
-                    
-                } catch let error {
-                    DispatchQueue.main.async {
-                        single(.failure(error))
-                    }
+            self.session.dataTask(with: url) { data, response, error in
+                if let error = error {
+                    single(.failure(error))
+                    return
                 }
-            }
+                
+                guard let data = data,
+                      let html = String(data: data, encoding: .utf8) else {
+                    single(.failure(FetchingEventsError.dataError))
+                    return
+                }
+                
+                single(.success(html))
+            }.resume()
             
             return Disposables.create()
         }
