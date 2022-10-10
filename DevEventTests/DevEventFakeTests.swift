@@ -33,9 +33,8 @@ final class DevEventFakeTests: XCTestCase {
         let data = try Data(contentsOf: fileURL)
         
         // Mock URLSession 만들기
-        let networkService = NetworkService.shared
         let urlSessionStub: URLSessionStub = {
-            let urlString = networkService.githubURLString
+            let urlString = NetworkService.githubURLString
             let url = URL(string: urlString)!
             let response = HTTPURLResponse(url: url,
                                            statusCode: 200,
@@ -46,8 +45,7 @@ final class DevEventFakeTests: XCTestCase {
                                        response: response)
         }()
         
-        networkService.session = urlSessionStub
-        
+        let networkService = NetworkService(session: urlSessionStub)
         let promise = expectation(description: "Value received!")
         
         // ✅ when

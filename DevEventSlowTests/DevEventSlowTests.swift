@@ -14,7 +14,6 @@ final class DevEventSlowTests: XCTestCase {
     var urlSession: URLSession!
     
     let networkConnectionManager = NetworkConnectionManager.shared
-    let networkService = NetworkService.shared
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -34,7 +33,7 @@ final class DevEventSlowTests: XCTestCase {
         )
         
         // given
-        let url = URL(string: networkService.githubURLString)!
+        let url = URL(string: NetworkService.githubURLString)!
         let promise = expectation(description: "Completion handler invoked")
         var statusCode: Int?
         var responseError: Error?

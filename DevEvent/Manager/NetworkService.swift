@@ -25,13 +25,11 @@ enum FetchingEventsError: Error {
 /// 데이터 스크래핑을 위해 네트워크 통신을 담당하는 singleton 클래스
 final class NetworkService {
     
-    static let shared = NetworkService()
-    
     var session: URLSessionProtocol
     
-    let githubURLString = "https://github.com/brave-people/Dev-Event/blob/master/README.md"
+    static let githubURLString = "https://github.com/brave-people/Dev-Event/blob/master/README.md"
     
-    private init(session: URLSessionProtocol = URLSession.shared) {
+    init(session: URLSessionProtocol = URLSession.shared) {
         self.session = session
     }
     
@@ -43,7 +41,7 @@ final class NetworkService {
                 return Disposables.create()
             }
 
-            guard let url = URL(string: self.githubURLString) else {
+            guard let url = URL(string: NetworkService.githubURLString) else {
                 single(.failure(FetchingEventsError.urlError))
                 return Disposables.create()
             }
