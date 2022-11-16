@@ -28,7 +28,7 @@ final class DevEventsFetcher {
     private var devEvents = BehaviorRelay<[SectionOfEvents]>(value: [])
     
     private init() {
-        self.networkService = NetworkService.shared
+        self.networkService = NetworkService()
         self.parser = Parser()
         
         fetchDevEvents()
