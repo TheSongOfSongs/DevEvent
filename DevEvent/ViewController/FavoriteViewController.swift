@@ -75,6 +75,7 @@ final class FavoriteViewController: UIViewController, StoryboardInstantiable {
             .share(replay: 1)
         
         dataSources
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] sectionOfEvents in
                 guard let self = self else { return }
                 let isFavoriteEmpty = sectionOfEvents.flatMap({$0.items}).isEmpty
