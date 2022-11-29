@@ -29,6 +29,9 @@ final class PersistanceManager {
     
     // MARK: - init
     private init() {
+        // CoreData stack이 초기화되기 전에 value transformer가 등록되어야 함
+        EventDetailValueTransformer.register()
+        
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         context = appDelegate.persistentContainer.viewContext
         fetchEvents()
