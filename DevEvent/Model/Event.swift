@@ -32,7 +32,10 @@ extension Event {
     }
 }
 
-public class EventDetail: NSObject, NSCoding {
+public class EventDetail: NSObject, NSSecureCoding {
+    
+    public static var supportsSecureCoding: Bool = true
+    
     var category: String?
     var host: String?
     var eventPeriodName: String?
