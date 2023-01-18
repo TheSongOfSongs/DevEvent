@@ -24,7 +24,7 @@ final class HomeViewModel: ViewModelType {
     private lazy var devEventsFetcherInput = DevEventsFetcher.Input(requestFetchingEvents: requestFetchingEvents)
     private lazy var devEventsFetcherOutput = DevEventsFetcher.shared.transform(input: devEventsFetcherInput)
     
-    private let eventsFromServer: BehaviorRelay<[SectionOfEvents]> = BehaviorRelay(value: [])
+    private let eventsFromServer = PublishRelay<[SectionOfEvents]>()
     private let favoriteEvents: BehaviorRelay<[EventCoreData]> = BehaviorRelay(value: [])
     
     let disposeBag = DisposeBag()
