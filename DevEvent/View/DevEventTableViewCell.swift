@@ -57,12 +57,9 @@ class DevEventTableViewCell: UITableViewCell {
     }
     
     func updateWith(event: Event, setFavoriteImageViewHidden: Bool? = nil) {
-        titleLabel.text = event.name
+        updateEventDetail(with: event)
         
-        if let detail = event.detail {
-            hostLabel.text = detail.host
-            dateLabel.text = "\(detail.eventPeriodName ?? ""): \(detail.duration ?? "")"
-        }
+        titleLabel.text = event.name
         
         if let setFavoriteImageViewHidden = setFavoriteImageViewHidden {
             favoriteImageView.isHidden = setFavoriteImageViewHidden
@@ -73,5 +70,20 @@ class DevEventTableViewCell: UITableViewCell {
     
     func updateUIForFavorite() {
         titleTrailingConstraint.constant = 20
+    }
+    
+    func updateEventDetail(with event: Event) {
+        guard let detail = event.detail else {
+            return
+        }
+        
+        hostLabel.text = detail.host
+        
+        guard let eventPeriodName = detail.eventPeriodName,
+              let duration = detail.duration else {
+            return
+        }
+        
+        dateLabel.text = "\(eventPeriodName): \(duration)"
     }
 }
