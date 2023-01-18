@@ -25,7 +25,7 @@ final class DevEventsFetcher {
     let parser: Parser
     let disposeBag = DisposeBag()
     
-    private var devEvents = BehaviorRelay<[SectionOfEvents]>(value: [])
+    private var devEvents = PublishRelay<[SectionOfEvents]>()
     
     private init() {
         self.networkService = NetworkService()
