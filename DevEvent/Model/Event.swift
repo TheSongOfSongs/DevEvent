@@ -44,8 +44,8 @@ public class EventDetail: NSObject, NSSecureCoding {
     public func encode(with coder: NSCoder) {
         coder.encode(category, forKey: "category")
         coder.encode(host, forKey: "host")
-        coder.encode(host, forKey: "eventPeriodName")
-        coder.encode(host, forKey: "duration")
+        coder.encode(eventPeriodName, forKey: "eventPeriodName")
+        coder.encode(duration, forKey: "duration")
     }
     
     public required init?(coder: NSCoder) {
@@ -57,11 +57,14 @@ public class EventDetail: NSObject, NSSecureCoding {
             self.host = host as String
         }
         
-        if let eventPeriodName = eventPeriodName {
+        // TODO: host와 eventPeriodName, duration 다른지 확인하는 legacy 코드 삭제하기
+        if let eventPeriodName = coder.decodeObject(of: NSString.self, forKey: "eventPeriodName"),
+           (self.host ?? "") != eventPeriodName as String {
             self.eventPeriodName = eventPeriodName as String
         }
         
-        if let duration = duration {
+        if let duration = coder.decodeObject(of: NSString.self, forKey: "duration"),
+           (self.host ?? "") != duration as String {
             self.duration = duration as String
         }
     }
