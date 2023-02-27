@@ -8,12 +8,11 @@
 import Foundation
 
 protocol URLSessionProtocol {
-    func dataTask(with url: URL, completionHandler: @escaping DataTaskCompletionHandler) -> URLSessionDataTaskProtocol
+    func data(with url: URL) async throws -> (data: Data, response: URLResponse)
 }
 
-
 extension URLSession: URLSessionProtocol {
-    func dataTask(with url: URL, completionHandler: @escaping DataTaskCompletionHandler) -> URLSessionDataTaskProtocol {
-        return dataTask(with: url, completionHandler: completionHandler)
+    func data(with url: URL) async throws -> (data: Data, response: URLResponse) {
+        return try await data(from: url)
     }
 }

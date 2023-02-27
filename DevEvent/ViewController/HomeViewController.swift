@@ -124,6 +124,9 @@ final class HomeViewController: UIViewController, StoryboardInstantiable {
                 }
             })
             .disposed(by: disposeBag)
+        
+        requestFetchingEvents
+            .onNext(())
     }
     
     func showWebViewController(of event: Event) {

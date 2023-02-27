@@ -12,8 +12,11 @@ import SwiftSoup
 
 enum FetchingEventsError: Error {
     case urlError
-    case parsingError
-    case dataError
+    case failedParse
+    case failedRequest
+    case invalidResponse
+    case invalidData
+    
     case unknown
     case other(Error)
     
@@ -34,34 +37,30 @@ final class NetworkService {
     }
     
     /// 스크래핑을 통해 가져온 HTML을 MonthlyEvent 타입으로 가공하는 함수
-    func fetchHTML() -> Single<String> {
-        return Single<String>.create { [weak self] single in
-            guard let self = self else {
-                single(.failure(FetchingEventsError.unknown))
-                return Disposables.create()
-            }
-
-            guard let url = URL(string: NetworkService.githubURLString) else {
-                single(.failure(FetchingEventsError.urlError))
-                return Disposables.create()
+    func fetchHTML() async -> Result<String, FetchingEventsError> {
+        guard let url = URL(string: NetworkService.githubURLString) else {
+            return(.failure(.urlError))
+        }
+        
+        do {
+            let (data, response) = try await session.data(with: url)
+            
+            guard let response = response as? HTTPURLResponse else {
+                return .failure(.invalidResponse)
             }
             
-            self.session.dataTask(with: url) { data, response, error in
-                if let error = error {
-                    single(.failure(error))
-                    return
-                }
-                
-                guard let data = data,
-                      let html = String(data: data, encoding: .utf8) else {
-                    single(.failure(FetchingEventsError.dataError))
-                    return
-                }
-                
-                single(.success(html))
-            }.resume()
+            guard response.statusCode == 200 else {
+                return .failure(.failedRequest)
+            }
             
-            return Disposables.create()
+            guard let html = String(data: data, encoding: .utf8) else {
+                return .failure(.invalidData)
+            }
+            
+            return .success(html)
+        } catch let error {
+            NSLog("❗️ error: \(error.localizedDescription)")
+            return .failure(FetchingEventsError.failedRequest)
         }
     }
 }

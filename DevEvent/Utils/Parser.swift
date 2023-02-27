@@ -20,7 +20,7 @@ struct Parser {
                 let doc = try SwiftSoup.parse(html)
                 
                 guard let readme = try doc.select("div#readme").first() else {
-                    single(.failure(FetchingEventsError.parsingError))
+                    single(.failure(FetchingEventsError.failedParse))
                     return Disposables.create()
                 }
                 
