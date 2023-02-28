@@ -27,18 +27,23 @@ final class HomeViewModel: ViewModelType {
     private let eventsFromServer = PublishRelay<[SectionOfEvents]>()
     private let favoriteEvents: BehaviorRelay<[EventCoreData]> = BehaviorRelay(value: [])
     
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
 
-    // MARK: - init
+    // MARK: - life cycle
     init() {
         fetchAllEvents()
     }
     
+    deinit {
+        disposeBag = DisposeBag()
+    }
+    
+    // MARK: - helpers
     // TODO: - refactor
     func transform(input: Input) -> Output {
         input.requestFetchingEvents
-            .subscribe(onNext: { _ in
-                self.requestFetchingEvents
+            .subscribe(with: self, onNext: { owner, _ in
+                owner.requestFetchingEvents
                     .onNext(())
             })
             .disposed(by: disposeBag)
@@ -67,11 +72,10 @@ final class HomeViewModel: ViewModelType {
     private func fetchAllEvents() {
         devEventsFetcherOutput
             .devEvents
-            .subscribe(onNext: { sectionOfEvents in
-                self.eventsFromServer.accept(sectionOfEvents)
-            }, onError: { error in
-                // TODO: - 에러 핸들링
-                print("🍎 error:\(error.localizedDescription)")
+            .subscribe(with: self, onNext: { owner, sectionOfEvents in
+                owner.eventsFromServer.accept(sectionOfEvents)
+            }, onError: { owner, error in
+                NSLog("❗️ error:\(error.localizedDescription)")
             })
             .disposed(by: disposeBag)
         
@@ -80,11 +84,10 @@ final class HomeViewModel: ViewModelType {
             .shared
             .transform(input: PersistanceManager.Input())
             .favoriteCoreDataEvents
-            .subscribe (onNext: { eventCoreData in
-                self.favoriteEvents.accept(eventCoreData)
-            }, onError: { error in
-                // TODO: - 에러 핸들링
-                print("🍎 error:\(error.localizedDescription)")
+            .subscribe(with: self, onNext: { owner, eventCoreData in
+                owner.favoriteEvents.accept(eventCoreData)
+            }, onError: { owner, error in
+                NSLog("❗️ error:\(error.localizedDescription)")
             })
             .disposed(by: disposeBag)
     }
