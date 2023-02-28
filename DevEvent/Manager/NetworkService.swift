@@ -16,13 +16,7 @@ enum FetchingEventsError: Error {
     case failedRequest
     case invalidResponse
     case invalidData
-    
     case unknown
-    case other(Error)
-    
-    static func map(_ error: Error) -> FetchingEventsError {
-      return (error as? FetchingEventsError) ?? .other(error)
-    }
 }
 
 /// 데이터 스크래핑을 위해 네트워크 통신을 담당하는 singleton 클래스
@@ -53,7 +47,8 @@ final class NetworkService {
                 return .failure(.failedRequest)
             }
             
-            guard let html = String(data: data, encoding: .utf8) else {
+            guard !data.isEmpty,
+                  let html = String(data: data, encoding: .utf8) else {
                 return .failure(.invalidData)
             }
             
