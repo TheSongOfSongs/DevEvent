@@ -17,6 +17,7 @@ final class DevEventsFetcher {
     
     struct Output {
         var devEvents: Observable<[SectionOfEvents]>
+        var error: Observable<NetworkServiceError>
     }
     
     static let shared: DevEventsFetcher = DevEventsFetcher()
@@ -26,35 +27,41 @@ final class DevEventsFetcher {
     let disposeBag = DisposeBag()
     
     private var devEvents = PublishRelay<[SectionOfEvents]>()
+    private var error = PublishRelay<NetworkServiceError>()
     
     private init() {
         self.networkService = NetworkService()
         self.parser = Parser()
-        
-        fetchDevEvents()
     }
     
-    private func fetchDevEvents() {
-        networkService.fetchHTML()
-            .flatMap({ self.parser.parse(html: $0) })
-            .subscribe(
-                onSuccess: { [weak self] events in
-                    self?.devEvents.accept(events)
-                },
-                onFailure: { error in
-                    
+    private func fetchDevEvents() async {
+        let result = await networkService.fetchHTML()
+        
+        switch result {
+        case .success(let html):
+            parser.parse(html: html)
+                .subscribe(with: self, onSuccess: { owner, result in
+                    owner.devEvents.accept(result)
+                }, onFailure: { owner, error in
+                    owner.error.accept(.failedParse)
                 })
-            .disposed(by: disposeBag)
+                .disposed(by: disposeBag)
+            break
+        case .failure(let error):
+            self.error.accept(error)
+        }
     }
     
     func transform(input: Input) -> Output {
         input.requestFetchingEvents?
-            .subscribe(onNext: { [weak self] _ in
-                self?.fetchDevEvents()
+            .subscribe(onNext: { _ in
+                Task {
+                    await self.fetchDevEvents()
+                }
             })
             .disposed(by: disposeBag)
         
-        let devEvents = devEvents.share()
-        return Output(devEvents: devEvents)
+        return Output(devEvents: devEvents.asObservable(),
+                      error: error.asObservable())
     }
 }
