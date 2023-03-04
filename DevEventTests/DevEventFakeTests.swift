@@ -87,7 +87,7 @@ final class DevEventFakeTests: XCTestCase {
         // when
         let networkService = NetworkService(session: urlSessionStub)
         
-        var result: FetchingEventsError?
+        var result: NetworkServiceError?
         if case let .failure(error) = await networkService.fetchHTML() {
             result = error
         }
@@ -112,7 +112,7 @@ final class DevEventFakeTests: XCTestCase {
         // when
         let networkService = NetworkService(session: urlSessionStub)
         
-        var result: FetchingEventsError?
+        var result: NetworkServiceError?
         if case let .failure(error) = await networkService.fetchHTML() {
             result = error
         }

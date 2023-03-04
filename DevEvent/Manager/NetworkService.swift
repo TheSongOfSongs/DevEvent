@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import SwiftSoup
 
-enum FetchingEventsError: Error {
+enum NetworkServiceError: Error {
     case urlError
     case failedParse
     case failedRequest
@@ -31,7 +31,7 @@ final class NetworkService {
     }
     
     /// 스크래핑을 통해 가져온 HTML을 MonthlyEvent 타입으로 가공하는 함수
-    func fetchHTML() async -> Result<String, FetchingEventsError> {
+    func fetchHTML() async -> Result<String, NetworkServiceError> {
         guard let url = URL(string: NetworkService.githubURLString) else {
             return(.failure(.urlError))
         }
@@ -55,7 +55,7 @@ final class NetworkService {
             return .success(html)
         } catch let error {
             NSLog("❗️ error: \(error.localizedDescription)")
-            return .failure(FetchingEventsError.failedRequest)
+            return .failure(NetworkServiceError.failedRequest)
         }
     }
 }

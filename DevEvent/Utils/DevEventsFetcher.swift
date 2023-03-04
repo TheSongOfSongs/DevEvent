@@ -17,7 +17,7 @@ final class DevEventsFetcher {
     
     struct Output {
         var devEvents: Observable<[SectionOfEvents]>
-        var error: Observable<FetchingEventsError>
+        var error: Observable<NetworkServiceError>
     }
     
     static let shared: DevEventsFetcher = DevEventsFetcher()
@@ -27,7 +27,7 @@ final class DevEventsFetcher {
     let disposeBag = DisposeBag()
     
     private var devEvents = PublishRelay<[SectionOfEvents]>()
-    private var error = PublishRelay<FetchingEventsError>()
+    private var error = PublishRelay<NetworkServiceError>()
     
     private init() {
         self.networkService = NetworkService()
